@@ -8,8 +8,11 @@ namespace FormsLommeregner
 {
     public class PhysicsFormulary
     {
-        public const double pi = 3.14;
         public const double g = 9.82;
+        public const double pi = 3.14;
+        public const double tau = 2 * pi;
+        
+
 
         public double PotentialE(double m, double h)
         {

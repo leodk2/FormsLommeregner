@@ -26,7 +26,6 @@ namespace FormsLommeregner
 
     public class SphereCircumference : Formular2var
     {
-        public
         public override double Function()
         {
             return 0;

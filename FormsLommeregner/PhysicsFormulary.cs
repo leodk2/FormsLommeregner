@@ -17,6 +17,7 @@ namespace FormsLommeregner
         // Potential Energy
         public double PotentialEnergyE(double mass, double height)
         {
+            
             double energy = gAcc * mass * height;
             return energy;
         }

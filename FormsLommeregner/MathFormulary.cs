@@ -18,14 +18,17 @@ namespace FormsLommeregner
 
     public abstract class Formular2var
     {
-        public string name;
-        public string description;
+        //public abstract string Name();
+        public abstract string Description();
+        public abstract string Name { get; set; }
         public abstract double Function();
         public abstract double FunctionTwo();
     }
 
     public class SphereCircumference : Formular2var
     {
+        Formular2var formular2Var;
+        Formular2var.name = "hej";
         public override double Function()
         {
             return 0;

@@ -20,15 +20,18 @@ namespace FormsLommeregner
     {
         //public abstract string Name();
         public abstract string Description();
-        public abstract string Name { get; set; }
-        public abstract double Function();
+        public abstract string Name { get; }
+        public abstract double Function(double a,double b );
         public abstract double FunctionTwo();
     }
 
     public class SphereCircumference : Formular2var
     {
-        Formular2var formular2Var;
-        Formular2var.name = "hej";
+        //Formular2var formular2Var;
+        //Formular2var.name = "hej";
+        public override string Name { get { return "omkreds af cirkel"} }
+        Form1 form1 = new Form1();
+       
         public override double Function()
         {
             return 0;

@@ -56,13 +56,14 @@ namespace FormsLommeregner
         public abstract double FunctionTwo(double a);
     }
 
+    #region geometry
     //  sphere circumference
     public class SphereCircumference : Formular2var
     {
         // set name
-        public override string Name { get { return "Omkreds af cirkel (Matematik)"} }
+        public override string Name { get { return "Omkreds af cirkel"} }
         // set description
-        public override string Description { get { "Find omkredsen på en cirkel" } }
+        public override string Description { get { "Find omkredsen af en cirkel" } }
 
         // find circumference parsing radius
         public override double Function(double radius)
@@ -82,5 +83,28 @@ namespace FormsLommeregner
         }
 
     }
+    
+    // square circumference
+    public class SquareCircumference : Formular2var
+    {
+        public override string Name { get { return "Omkreds af kvadrat" } }
+        public override string Description { get { return "Find omkredsen af et kvadrat" } }
+
+        public override double Function(double sidelaengde)
+        {
+            double omkreds = sidelaengde * 4;
+            return omkreds;
+        }
+
+        public override double FunctionTwo(double omkreds)
+        {
+            double sidelaengde = omkreds / 4;
+            return sidelaengde;
+        }
+    }
+
+    #endregion
+
+
 }
 

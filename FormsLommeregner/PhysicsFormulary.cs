@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Math;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace FormsLommeregner
     public class PhysicsFormulary
     {
         public const double gAcc = 9.82;
-        public const double pi = 3.14;
+        public const double pi = Math.PI;
         public const double tau = 2 * pi;
         
 

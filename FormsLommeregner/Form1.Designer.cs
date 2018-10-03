@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.funcList = new System.Windows.Forms.TreeView();
             this.Result = new System.Windows.Forms.Label();
             this.FuncName = new System.Windows.Forms.Label();
             this.var1 = new System.Windows.Forms.Label();
@@ -36,12 +36,13 @@
             this.Description = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // treeView1
+            // funcList
             // 
-            this.treeView1.Location = new System.Drawing.Point(13, 13);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(113, 425);
-            this.treeView1.TabIndex = 0;
+            this.funcList.Location = new System.Drawing.Point(13, 13);
+            this.funcList.Name = "funcList";
+            this.funcList.Size = new System.Drawing.Size(113, 425);
+            this.funcList.TabIndex = 0;
+            this.funcList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
             // Result
             // 
@@ -102,7 +103,7 @@
             this.Controls.Add(this.var1);
             this.Controls.Add(this.FuncName);
             this.Controls.Add(this.Result);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.funcList);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -113,7 +114,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView funcList;
         private System.Windows.Forms.Label Result;
         private System.Windows.Forms.Label FuncName;
         private System.Windows.Forms.Label var1;

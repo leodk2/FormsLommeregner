@@ -12,10 +12,18 @@ namespace FormsLommeregner
         public const double gAcc = 9.82;
         public const double pi = Math.PI;
         public const double tau = 2 * pi;
-        
+        public List<string> vs = new List<string>
+
+        public void ListLoop()
+        {
+            for (int i = 0; i < classArray.Length; i++)
+            {
+                vs.add(classArray[i].Name); 
+            }
+        }
 
     }
-
+    
     public abstract class Formular2var
     {
         //public abstract string Name();

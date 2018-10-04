@@ -28,13 +28,18 @@ namespace FormsLommeregner
         {
             // add functions. NOTE: multiple functions can be added with one .Add()
             formulars.Add(new SphereCircumference());
-            formulars.Add(new SquareCircumference());   
+            formulars.Add(new SquareCircumference());
+            TreeNode mathNode = new TreeNode("Matematik");
+            
             foreach (Formula formula in formulars)
             {
-                var addnodes = form1.funcList.Nodes.Add(formula.Name);
-                Console.OpenStandardOutput();
-                Console.WriteLine(addnodes);
+                //var addnodes = form1.funcList.Nodes.Add(formula.Name);
+                //Console.OpenStandardOutput();
+                //Console.WriteLine(addnodes);
+                mathNode.Nodes.Add(formula.Name);
             }
+            form1.funcList.Nodes.Add(mathNode);
+            //var addChildNodes = addnodes.Nodes.Add("nigger")
             
         }
 

@@ -17,6 +17,7 @@ namespace FormsLommeregner
         public Form1()
         {
             InitializeComponent();
+            funcList.autoSize = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace FormsLommeregner
 {
-    public class program
+   /* public class Program
     {
-        
-    }
+        static void Main()
+        {
+
+        }
+    }*/
 
     public class MathFormulary
     {
@@ -18,11 +21,11 @@ namespace FormsLommeregner
         public const double pi = Math.PI;
         public const double tau = 2 * pi;
 
-        public List<Formular> formulars = new List<Formular>;
+        public List<Formular> formulars = new List<Formular>();
 
         public SphereCircumference sc = new SphereCircumference();
 
-        public void addAll()
+        public void AddAll()
         {
             formulars.Add(sc);
 

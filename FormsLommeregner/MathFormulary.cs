@@ -21,14 +21,15 @@ namespace FormsLommeregner
         public const double tau = 2 * pi;
 
         // create list of formulars
-        public List<Formular> formulars = new List<Formular>();
+        public List<Formula> formulars = new List<Formula>();
 
         // function to add all formulars to formulars list
         public void AddAll(Form1 form1)
         {
             // add functions. NOTE: multiple functions can be added with one .Add()
             formulars.Add(new SphereCircumference());
-            foreach (Formular formula in formulars)
+            formulars.Add(new SquareCircumference());   
+            foreach (Formula formula in formulars)
             {
                 var addnodes = form1.funcList.Nodes.Add(formula.Name);
                 Console.OpenStandardOutput();
@@ -40,14 +41,14 @@ namespace FormsLommeregner
     }
 
     // parent formular class
-    public abstract class Formular
+    public abstract class Formula
     {
         // name of formular
         public abstract string Name { get; }
     }
 
     // formular class for 2 unknown variables
-    public abstract class Formular2var : Formular
+    public abstract class Formular2var : Formula
     {
         // description of formular
         public abstract string Description { get; }

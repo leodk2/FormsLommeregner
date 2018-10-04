@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Runtime.InteropServices;
 
 namespace FormsLommeregner
 {
@@ -20,7 +21,7 @@ namespace FormsLommeregner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           // AllocConsole();
             
 
 
@@ -29,10 +30,11 @@ namespace FormsLommeregner
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            //TreeNode[] treeNodes = new TreeNode[]
+            
             void FormulaSelector()
             {
-                funcList.Nodes.Add("Math");
+                
+               
 
             }
         }

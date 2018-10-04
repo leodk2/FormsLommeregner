@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FormsLommeregner
 {
@@ -23,10 +24,17 @@ namespace FormsLommeregner
         public List<Formular> formulars = new List<Formular>();
 
         // function to add all formulars to formulars list
-        public void AddAll()
+        public void AddAll(Form1 form1)
         {
             // add functions. NOTE: multiple functions can be added with one .Add()
-            formulars.Add(new SphereCircumference()); 
+            formulars.Add(new SphereCircumference());
+            foreach (Formular formula in formulars)
+            {
+                var addnodes = form1.funcList.Nodes.Add(formula.Name);
+                Console.OpenStandardOutput();
+                Console.WriteLine(addnodes);
+            }
+            
         }
 
     }
@@ -34,14 +42,13 @@ namespace FormsLommeregner
     // parent formular class
     public abstract class Formular
     {
-
+        // name of formular
+        public abstract string Name { get; }
     }
 
     // formular class for 2 unknown variables
     public abstract class Formular2var : Formular
     {
-        // name of formular
-        public abstract string Name { get; }
         // description of formular
         public abstract string Description { get; }
 

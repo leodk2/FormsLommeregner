@@ -16,9 +16,33 @@ namespace FormsLommeregner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 form = new Form1();
             MathFormulary mathFormulary = new MathFormulary();
-            mathFormulary.AddAll();
+            mathFormulary.AddAll(form);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            Application.Run(form);
 
         }
     }

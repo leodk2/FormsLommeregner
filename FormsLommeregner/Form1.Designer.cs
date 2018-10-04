@@ -113,13 +113,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TreeView funcList;
         private System.Windows.Forms.Label Result;
         private System.Windows.Forms.Label FuncName;
         private System.Windows.Forms.Label var1;
         private System.Windows.Forms.Label var2;
         private System.Windows.Forms.Label Description;
+        public System.Windows.Forms.TreeView funcList;
     }
 }
 

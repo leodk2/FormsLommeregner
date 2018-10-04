@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace FormsLommeregner
 {
-    // why is this here? IDK
-    public class program
-    {
-        
-    }
 
     // math formulary main class
     public class MathFormulary
@@ -25,13 +20,13 @@ namespace FormsLommeregner
         public const double tau = 2 * pi;
 
         // create list of formulars
-        public List<Formular> formulars = new List<Formular>;
+        public List<Formular> formulars = new List<Formular>();
 
         // function to add all formulars to formulars list
-        public void addAll()
+        public void AddAll()
         {
             // add functions. NOTE: multiple functions can be added with one .Add()
-            formulars.Add(new SphereCircumference);
+            formulars.Add(new SphereCircumference()); 
         }
 
     }
@@ -48,7 +43,7 @@ namespace FormsLommeregner
         // name of formular
         public abstract string Name { get; }
         // description of formular
-        public abstract string Description { get; };
+        public abstract string Description { get; }
 
         // function to find main unknown variable
         public abstract double Function(double a);
@@ -61,15 +56,15 @@ namespace FormsLommeregner
     public class SphereCircumference : Formular2var
     {
         // set name
-        public override string Name { get { return "Omkreds af cirkel"} }
+        public override string Name { get { return "Omkreds af cirkel"; } }
         // set description
-        public override string Description { get { "Find omkredsen af en cirkel" } }
+        public override string Description { get { return "Find omkredsen af en cirkel"; }}
 
         // find circumference parsing radius
         public override double Function(double radius)
         {
             // formula
-            double circ = 2 * radius * pi;
+            double circ = 2 * radius * MathFormulary.pi;
             // return
             return circ;
         }
@@ -77,7 +72,7 @@ namespace FormsLommeregner
         public override double FunctionTwo(double circ)
         {
             // formula
-            double radius = circ / (2 * pi);
+            double radius = circ / (2 * MathFormulary.pi);
             // return
             return radius;
         }
@@ -87,8 +82,8 @@ namespace FormsLommeregner
     // square circumference
     public class SquareCircumference : Formular2var
     {
-        public override string Name { get { return "Omkreds af kvadrat" } }
-        public override string Description { get { return "Find omkredsen af et kvadrat" } }
+        public override string Name { get { return "Omkreds af kvadrat"; } }
+        public override string Description { get { return "Find omkredsen af et kvadrat"; } }
 
         public override double Function(double sidelaengde)
         {

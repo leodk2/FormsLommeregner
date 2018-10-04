@@ -29,7 +29,7 @@ namespace FormsLommeregner
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            TreeNode[] treeNodes = new TreeNode[]
+            //TreeNode[] treeNodes = new TreeNode[]
             void FormulaSelector()
             {
                 funcList.Nodes.Add("Math");

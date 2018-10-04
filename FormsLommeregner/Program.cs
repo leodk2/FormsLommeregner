@@ -19,7 +19,18 @@ namespace FormsLommeregner
             Form1 form = new Form1();
             MathFormulary mathFormulary = new MathFormulary();
             mathFormulary.AddAll(form);
+            
+            
+            
+            /*
+            switch (form.funcList.SelectedNode.ToString())
+            {
+                case "cirkelomkreds":
 
+                    break;
+
+
+            }*/
 
 
 

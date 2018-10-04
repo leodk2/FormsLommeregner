@@ -55,6 +55,7 @@ namespace FormsLommeregner
     // formular class for 2 unknown variables
     public abstract class Formular2var : Formula
     {
+        public int varCount = 2;
         // description of formular
         public abstract string Description { get; }
 

@@ -31,24 +31,24 @@
             this.funcList = new System.Windows.Forms.TreeView();
             this.Result = new System.Windows.Forms.Label();
             this.FuncName = new System.Windows.Forms.Label();
-            this.var1 = new System.Windows.Forms.Label();
-            this.var2 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.Label();
+            this.Var1 = new System.Windows.Forms.TextBox();
+            this.Var2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // funcList
             // 
             this.funcList.Location = new System.Drawing.Point(13, 13);
             this.funcList.Name = "funcList";
-            this.funcList.Size = new System.Drawing.Size(113, 425);
+            this.funcList.Size = new System.Drawing.Size(148, 425);
             this.funcList.TabIndex = 0;
-            this.funcList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
+            this.funcList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.funcList_AfterSelect);
             // 
             // Result
             // 
             this.Result.AutoSize = true;
             this.Result.Font = new System.Drawing.Font("Cambria Math", 20F);
-            this.Result.Location = new System.Drawing.Point(132, 248);
+            this.Result.Location = new System.Drawing.Point(197, 254);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(137, 151);
             this.Result.TabIndex = 3;
@@ -64,26 +64,6 @@
             this.FuncName.TabIndex = 4;
             this.FuncName.Text = "Function";
             // 
-            // var1
-            // 
-            this.var1.AutoSize = true;
-            this.var1.Font = new System.Drawing.Font("Cambria Math", 20F);
-            this.var1.Location = new System.Drawing.Point(132, 116);
-            this.var1.Name = "var1";
-            this.var1.Size = new System.Drawing.Size(117, 151);
-            this.var1.TabIndex = 5;
-            this.var1.Text = "Var1";
-            // 
-            // var2
-            // 
-            this.var2.AutoSize = true;
-            this.var2.Font = new System.Drawing.Font("Cambria Math", 20F);
-            this.var2.Location = new System.Drawing.Point(540, 116);
-            this.var2.Name = "var2";
-            this.var2.Size = new System.Drawing.Size(117, 151);
-            this.var2.TabIndex = 6;
-            this.var2.Text = "Var2";
-            // 
             // Description
             // 
             this.Description.AutoSize = true;
@@ -93,14 +73,29 @@
             this.Description.TabIndex = 7;
             this.Description.Text = "Beskrivelse";
             // 
+            // Var1
+            // 
+            this.Var1.Location = new System.Drawing.Point(223, 199);
+            this.Var1.Name = "Var1";
+            this.Var1.Size = new System.Drawing.Size(100, 20);
+            this.Var1.TabIndex = 8;
+            // 
+            // Var2
+            // 
+            this.Var2.Location = new System.Drawing.Point(527, 199);
+            this.Var2.Name = "Var2";
+            this.Var2.Size = new System.Drawing.Size(100, 20);
+            this.Var2.TabIndex = 9;
+            this.Var2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Var2);
+            this.Controls.Add(this.Var1);
             this.Controls.Add(this.Description);
-            this.Controls.Add(this.var2);
-            this.Controls.Add(this.var1);
             this.Controls.Add(this.FuncName);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.funcList);
@@ -115,10 +110,10 @@
         #endregion
         private System.Windows.Forms.Label Result;
         private System.Windows.Forms.Label FuncName;
-        private System.Windows.Forms.Label var1;
-        private System.Windows.Forms.Label var2;
-        private System.Windows.Forms.Label Description;
         public System.Windows.Forms.TreeView funcList;
+        private System.Windows.Forms.Label Description;
+        private System.Windows.Forms.TextBox Var1;
+        private System.Windows.Forms.TextBox Var2;
     }
 }
 

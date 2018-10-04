@@ -17,7 +17,8 @@ namespace FormsLommeregner
         public Form1()
         {
             InitializeComponent();
-            funcList.autoSize = true;
+            //funcList.autoSize = true;
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,12 +33,31 @@ namespace FormsLommeregner
         {
 
             
-            void FormulaSelector()
-            {
-                
-               
+            
+        }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            MathFormulary mathFormulary = new MathFormulary();
+
+            foreach (Formula formula in mathFormulary.formulars)
+            {
+                if (formula.Name == funcList.SelectedNode.ToString())
+                {
+                    setupFields(formula);
+                }
             }
+
+        }
+
+        public void setupFields(Formula formula)
+        {
+
         }
     }
 }

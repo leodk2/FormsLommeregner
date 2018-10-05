@@ -43,22 +43,15 @@ namespace FormsLommeregner
 
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            Console.Write("1");
-            Console.Write(Environment.NewLine);
-
             MathFormulary mathFormulary = new MathFormulary();
-            Console.Write("2");
-            Console.Write(Environment.NewLine);
+            mathFormulary.AddAll(new Form1()); // this should be like and init or something
 
-            foreach (MathFormulary formula in mathFormulary.formulars)
+            foreach (BaseFormula formula in mathFormulary.formulars)
             {
-                Console.Write("3");
-                Console.Write(Environment.NewLine);
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
 
-                    Console.Write("yeet");
-                    Console.Write(Environment.NewLine);
+                    Console.WriteLine("det virker");
                     //setupFields(formula);
                     break;
                 }

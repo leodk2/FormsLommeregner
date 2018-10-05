@@ -22,6 +22,7 @@ namespace FormsLommeregner
 
         // create list of formulars
         public List<BaseFormula> formulars = new List<BaseFormula>();
+        
 
         // function to add all formulars to formulars list
         public void AddAll(Form1 form1)

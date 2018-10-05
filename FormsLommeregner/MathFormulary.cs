@@ -12,16 +12,16 @@ namespace FormsLommeregner
     // math formulary main class
     public class MathFormulary
     {
-        // constants
+        /// constants
         // gravitational acceleration on earth
         public const double gAcc = 9.82;
         // pi
         public const double pi = Math.PI;
-        // some other constant i haven't heard of
+        // Tau
         public const double tau = 2 * pi;
 
         // create list of formulars
-        public List<Formula> formulars = new List<Formula>();
+        public List<BaseFormula> formulars = new List<BaseFormula>();
 
         // function to add all formulars to formulars list
         public void AddAll(Form1 form1)
@@ -31,7 +31,7 @@ namespace FormsLommeregner
             formulars.Add(new SquareCircumference());
             TreeNode mathNode = new TreeNode("Matematik");
             
-            foreach (Formula formula in formulars)
+            foreach (BaseFormula formula in formulars)
             {
                 //var addnodes = form1.funcList.Nodes.Add(formula.Name);
                 //Console.OpenStandardOutput();
@@ -46,25 +46,7 @@ namespace FormsLommeregner
     }
 
     // parent formular class
-    public abstract class Formula
-    {
-        // name of formular
-        public abstract string Name { get; }
-    }
-
-    // formular class for 2 unknown variables
-    public abstract class Formular2var : Formula
-    {
-        public int varCount = 2;
-        // description of formular
-        public abstract string Description { get; }
-
-        // function to find main unknown variable
-        public abstract double Function(double a);
-        // function to find the second variable
-        public abstract double FunctionTwo(double a);
-    }
-
+    
     #region geometry
     //  sphere circumference
     public class SphereCircumference : Formular2var

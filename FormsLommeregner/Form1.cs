@@ -45,7 +45,7 @@ namespace FormsLommeregner
         {
             MathFormulary mathFormulary = new MathFormulary();
 
-            foreach (Formula formula in mathFormulary.formulars)
+            foreach (BaseFormula formula in mathFormulary.formulars)
             {
                 if (formula.Name == funcList.SelectedNode.ToString())
                 {
@@ -55,7 +55,7 @@ namespace FormsLommeregner
 
         }
 
-        public void setupFields(Formula formula)
+        public void setupFields(BaseFormula formula)
         {
 
         }

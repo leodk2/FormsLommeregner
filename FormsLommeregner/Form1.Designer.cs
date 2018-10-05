@@ -34,6 +34,7 @@
             this.Description = new System.Windows.Forms.Label();
             this.Var1 = new System.Windows.Forms.TextBox();
             this.Var2 = new System.Windows.Forms.TextBox();
+            this.Calc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // funcList
@@ -88,11 +89,21 @@
             this.Var2.TabIndex = 9;
             this.Var2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // Calc
+            // 
+            this.Calc.Location = new System.Drawing.Point(382, 317);
+            this.Calc.Name = "Calc";
+            this.Calc.Size = new System.Drawing.Size(75, 23);
+            this.Calc.TabIndex = 10;
+            this.Calc.Text = "Beregn";
+            this.Calc.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Calc);
             this.Controls.Add(this.Var2);
             this.Controls.Add(this.Var1);
             this.Controls.Add(this.Description);
@@ -114,6 +125,7 @@
         private System.Windows.Forms.Label Description;
         private System.Windows.Forms.TextBox Var1;
         private System.Windows.Forms.TextBox Var2;
+        private System.Windows.Forms.Button Calc;
     }
 }
 

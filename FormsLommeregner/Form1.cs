@@ -43,21 +43,32 @@ namespace FormsLommeregner
 
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            MathFormulary mathFormulary = new MathFormulary();
+            Console.Write("1");
+            Console.Write(Environment.NewLine);
 
-            foreach (BaseFormula formula in mathFormulary.formulars)
+            MathFormulary mathFormulary = new MathFormulary();
+            Console.Write("2");
+            Console.Write(Environment.NewLine);
+
+            foreach (MathFormulary formula in mathFormulary.formulars)
             {
-                if (formula.Name == funcList.SelectedNode.ToString())
+                Console.Write("3");
+                Console.Write(Environment.NewLine);
+                if (formula.Name == funcList.SelectedNode.Text)
                 {
-                    setupFields(formula);
+
+                    Console.Write("yeet");
+                    Console.Write(Environment.NewLine);
+                    //setupFields(formula);
+                    break;
                 }
             }
 
         }
 
-        public void setupFields(BaseFormula formula)
+        public void setupFields(MathFormulary formula)
         {
-
+            int i = 0;
         }
     }
 }

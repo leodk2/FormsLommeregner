@@ -17,11 +17,11 @@ namespace FormsLommeregner
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
-            MathFormulary mathFormulary = new MathFormulary();
-            mathFormulary.AddAll(form);
-            
-            
-            
+            TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
+            form.funcList.Nodes.AddRange(treeNodes);
+
+
+
             /*
             switch (form.funcList.SelectedNode.ToString())
             {

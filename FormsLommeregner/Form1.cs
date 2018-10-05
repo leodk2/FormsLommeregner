@@ -44,9 +44,8 @@ namespace FormsLommeregner
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
             MathFormulary mathFormulary = new MathFormulary();
-            mathFormulary.AddAll(new Form1()); // this should be like and init or something
 
-            foreach (BaseFormula formula in mathFormulary.formulars)
+            foreach (BaseFormula formula in mathFormulary.formulas)
             {
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
@@ -61,7 +60,7 @@ namespace FormsLommeregner
 
         public void setupFields(MathFormulary formula)
         {
-            int i = 0;
+            
         }
     }
 }

@@ -4,14 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FormsLommeregner
 {
 
     public class Constants
     {
-        const double pi = PI;
-        const double tau = 2 * PI;
+        // math
+        public const double pi = Math.PI;
+        public const double tau = 2 * pi;
+
+        // physics
+        public const double gAcc = 9.82;
+    }
+
+    public abstract class BaseFormulary
+    {
+        public BaseFormulary()
+        {
+
+        }
+
     }
 
     public abstract class BaseFormula

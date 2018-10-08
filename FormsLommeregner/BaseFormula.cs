@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace FormsLommeregner
 {
-
+    // parent formular class
     public abstract class BaseFormula
     {
         // name of formular
         public abstract string Name { get; }
-
-
 
     }
 

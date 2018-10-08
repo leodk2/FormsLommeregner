@@ -49,13 +49,14 @@ namespace FormsLommeregner
             {
                 if (formula.Name == funcList.SelectedNode.ToString())
                 {
-                    setupFields(formula);
+                    SetupFields(formula);
+                    Console.Write(formula);
                 }
             }
 
         }
 
-        public void setupFields(BaseFormula formula)
+        public void SetupFields(BaseFormula formula)
         {
 
         }

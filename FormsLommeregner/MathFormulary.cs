@@ -45,7 +45,7 @@ namespace FormsLommeregner
 
     }
 
-    // parent formular class
+    
     
     #region geometry
     //  sphere circumference

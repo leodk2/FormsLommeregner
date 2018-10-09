@@ -45,20 +45,22 @@ namespace FormsLommeregner
         {
             MathFormulary mathFormulary = new MathFormulary();
 
-            foreach (BaseFormula formula in mathFormulary.formulars)
+            foreach (BaseFormula formula in mathFormulary.formulas)
             {
-                if (formula.Name == funcList.SelectedNode.ToString())
+                if (formula.Name == funcList.SelectedNode.Text)
                 {
-                    SetupFields(formula);
-                    Console.Write(formula);
+
+                    Console.WriteLine("det virker");
+                    //setupFields(formula);
+                    break;
                 }
             }
 
         }
 
-        public void SetupFields(BaseFormula formula)
+        public void setupFields(MathFormulary formula)
         {
-
+            
         }
     }
 }

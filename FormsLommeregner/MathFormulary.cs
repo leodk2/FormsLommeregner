@@ -10,7 +10,7 @@ namespace FormsLommeregner
 {
 
     // math formulary main class
-    public class MathFormulary
+    public class MathFormulary : BaseFormulary
     {
         /// constants
         // gravitational acceleration on earth
@@ -20,25 +20,27 @@ namespace FormsLommeregner
         // Tau
         public const double tau = 2 * pi;
 
-        // create list of formulars
-        public List<BaseFormula> formulars = new List<BaseFormula>();
+        // create list of formulas
+        public List<BaseFormula> formulas = new List<BaseFormula>();
+
+        // create treeNode accessible from outside !shouid be static in BaseFormulary
+        public TreeNode treeNode = new TreeNode("Matematik");
 
         // function to add all formulars to formulars list
-        public void AddAll(Form1 form1)
+        public MathFormulary() : base()
         {
             // add functions. NOTE: multiple functions can be added with one .Add()
-            formulars.Add(new SphereCircumference());
-            formulars.Add(new SquareCircumference());
-            TreeNode mathNode = new TreeNode("Matematik");
+            formulas.Add(new SphereCircumference());
+            formulas.Add(new SquareCircumference());
             
-            foreach (BaseFormula formula in formulars)
+            foreach (BaseFormula formula in formulas)
             {
                 //var addnodes = form1.funcList.Nodes.Add(formula.Name);
                 //Console.OpenStandardOutput();
                 //Console.WriteLine(addnodes);
-                mathNode.Nodes.Add(formula.Name);
+                treeNode.Nodes.Add(formula.Name);
             }
-            form1.funcList.Nodes.Add(mathNode);
+            //form1.funcList.Nodes.Add(mathNode);
             //var addChildNodes = addnodes.Nodes.Add("nigger")
             
         }

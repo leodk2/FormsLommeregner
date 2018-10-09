@@ -75,7 +75,7 @@ namespace FormsLommeregner
         {
             if (currentFormula != null)
             {
-                var varName = Convert.ToDouble( Var1.Text);
+                var varName = Convert.ToDouble(Var1.Text);
                 Formula2var formul = currentFormula as Formula2var;
                 Console.WriteLine(formul.Function(varName));
             }

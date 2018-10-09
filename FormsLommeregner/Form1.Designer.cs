@@ -99,6 +99,7 @@
             this.Calc.TabIndex = 10;
             this.Calc.Text = "Beregn";
             this.Calc.UseVisualStyleBackColor = true;
+            this.Calc.Click += new System.EventHandler(this.Calc_Click);
             // 
             // Variables
             // 

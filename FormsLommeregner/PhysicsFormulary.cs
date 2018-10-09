@@ -21,7 +21,7 @@ namespace FormsLommeregner
         {
 
             // add functions. NOTE: multiple functions can be added with one .Add()
-            
+            formulas.Add(new SphereCircumference());
             //formulas.Add(new PotentialEnergy());
             //formulars.Add(new Ohm());
 
@@ -53,7 +53,31 @@ namespace FormsLommeregner
             */
         }
 
-        
+        public class SphereCircumference : Formula2var
+        {
+            // set name
+            public override string Name { get { return "Omkreds af cirkel"; } }
+            // set description
+            public override string Description { get { return "Find omkredsen af en cirkel"; } }
+
+            // find circumference parsing radius
+            public override double Function(double radius)
+            {
+                // formula
+                double circ = 2 * radius * MathFormulary.pi;
+                // return
+                return circ;
+            }
+            // find radius parsing circumference
+            public override double FunctionTwo(double circ)
+            {
+                // formula
+                double radius = circ / (2 * MathFormulary.pi);
+                // return
+                return radius;
+            }
+
+        }
 
     }
 }

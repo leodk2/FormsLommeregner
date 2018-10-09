@@ -39,9 +39,12 @@ namespace FormsLommeregner
                 //Console.OpenStandardOutput();
                 //Console.WriteLine(addnodes);
                 treeNode.Nodes.Add(formula.Name);
+
             }
             //form1.funcList.Nodes.Add(mathNode);
             //var addChildNodes = addnodes.Nodes.Add("nigger")
+            
+            
             
         }
 
@@ -56,11 +59,30 @@ namespace FormsLommeregner
         // set name
         public override string Name { get { return "Omkreds af cirkel"; } }
         // set description
-        public override string Description { get { return "Find omkredsen af en cirkel"; }}
+        public override string Description { get { return "Find omkredsen af en cirkel"; } }
+        //sets a read only field to add to VarName property
+        readonly string[] vs = new string[] { "Radius", "Omkreds" };
+        // sets the variable name property for use in combobox
+        public override string[] VarName { get { return vs; } }
+
+
+        // A shared method that sets all controls in the form
+        public override void Shared()
+        {
+            Form1 form1 = new Form1();
+            form1.FuncName.Text = Name;
+            form1.Description.Text = Description;
+            form1.Variables.Items.AddRange(VarName);
+
+
+        }
+
+
 
         // find circumference parsing radius
         public override double Function(double radius)
         {
+
             // formula
             double circ = 2 * radius * MathFormulary.pi;
             // return
@@ -76,13 +98,19 @@ namespace FormsLommeregner
         }
 
     }
-    
+
     // square circumference
     public class SquareCircumference : Formular2var
     {
+        //Sets the name of the formula
         public override string Name { get { return "Omkreds af kvadrat"; } }
+        //sets the descreption of the formula
         public override string Description { get { return "Find omkredsen af et kvadrat"; } }
-
+        //initializes a readonly array to add to the Varname property
+        readonly string[] vs = new string[] { "Sidelængde" };
+        //sets the variables of the formula
+        public override string[] VarName { get { return vs; } }
+           
         public override double Function(double sidelaengde)
         {
             double omkreds = sidelaengde * 4;
@@ -93,6 +121,11 @@ namespace FormsLommeregner
         {
             double sidelaengde = omkreds / 4;
             return sidelaengde;
+        }
+
+        public override void Shared()
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -49,6 +49,8 @@ namespace FormsLommeregner
             {
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
+                    SphereCircumference sphereCircumference = new SphereCircumference();
+                    sphereCircumference.Shared();
 
                     Console.WriteLine("det virker");
                     //setupFields(formula);

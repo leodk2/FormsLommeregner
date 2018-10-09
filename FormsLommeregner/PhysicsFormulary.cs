@@ -53,7 +53,7 @@ namespace FormsLommeregner
             */
         }
 
-        public class SphereCircumference : Formular2var
+        public class SphereCircumference : Formula2var
         {
             // set name
             public override string Name { get { return "Omkreds af cirkel"; } }

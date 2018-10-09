@@ -14,11 +14,23 @@ namespace FormsLommeregner
 {
     public partial class Form1 : Form
     {
+        public BaseFormula currentFormula;
+
         public Form1()
         {
             InitializeComponent();
             //funcList.autoSize = true;
-            
+
+        }
+
+        public void Print (string a)
+        {
+
+            Console.WriteLine(a);
+        }
+        public void Print(int b)
+        {
+            Console.WriteLine(b);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,8 +43,6 @@ namespace FormsLommeregner
 
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
-            
             
         }
 
@@ -49,9 +59,7 @@ namespace FormsLommeregner
             {
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
-
-                    Console.WriteLine("det virker");
-                    //setupFields(formula);
+                    currentFormula = formula;
                     break;
                 }
             }
@@ -61,6 +69,15 @@ namespace FormsLommeregner
         public void setupFields(MathFormulary formula)
         {
             
+        }
+
+        private void Calc_Click(object sender, EventArgs e)
+        {
+            if (currentFormula != null)
+            {
+                Formula2var formul = currentFormula as Formula2var;
+                Console.WriteLine(formul.Function(5));
+            }
         }
     }
 }

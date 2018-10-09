@@ -51,7 +51,7 @@ namespace FormsLommeregner
     
     #region geometry
     //  sphere circumference
-    public class SphereCircumference : Formular2var
+    public class SphereCircumference : Formula2var
     {
         // set name
         public override string Name { get { return "Omkreds af cirkel"; } }
@@ -78,7 +78,7 @@ namespace FormsLommeregner
     }
     
     // square circumference
-    public class SquareCircumference : Formular2var
+    public class SquareCircumference : Formula2var
     {
         public override string Name { get { return "Omkreds af kvadrat"; } }
         public override string Description { get { return "Find omkredsen af et kvadrat"; } }

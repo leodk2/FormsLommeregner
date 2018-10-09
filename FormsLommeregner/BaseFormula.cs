@@ -36,7 +36,7 @@ namespace FormsLommeregner
     }
 
     // formular class for 2 unknown variables
-    public abstract class Formular2var : BaseFormula
+    public abstract class Formula2var : BaseFormula
     {
 
 

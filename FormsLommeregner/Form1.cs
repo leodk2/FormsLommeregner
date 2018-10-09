@@ -20,7 +20,7 @@ namespace FormsLommeregner
         {
             InitializeComponent();
             //funcList.autoSize = true;
-
+            Variables.Visible = false; Var2.Visible = false; Var1.Visible = false;
         }
 
         public void Print (string a)
@@ -59,6 +59,11 @@ namespace FormsLommeregner
             {
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
+                    if (currentFormula.GetType() == typeof(Formula2var))
+                    {
+                        // do 2 var stuff
+
+                    }
                     currentFormula = formula;
                     break;
                 }

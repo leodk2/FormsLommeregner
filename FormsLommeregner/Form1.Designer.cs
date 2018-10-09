@@ -40,7 +40,7 @@
             // 
             // funcList
             // 
-            this.funcList.Location = new System.Drawing.Point(13, 13);
+            this.funcList.Location = new System.Drawing.Point(12, 14);
             this.funcList.Name = "funcList";
             this.funcList.Size = new System.Drawing.Size(148, 425);
             this.funcList.TabIndex = 0;

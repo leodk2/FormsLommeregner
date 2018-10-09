@@ -59,12 +59,19 @@ namespace FormsLommeregner
             {
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
+                    currentFormula = formula;
+                    
                     if (currentFormula.GetType() == typeof(Formula2var))
                     {
                         // do 2 var stuff
+                        Var1.Visible = true;
+                    }
+                    else if (currentFormula.GetType() == typeof(Formular3var))
+                    {
+                        Var1.Visible = true; Var2.Visible = true;
 
                     }
-                    currentFormula = formula;
+                    
                     break;
                 }
             }

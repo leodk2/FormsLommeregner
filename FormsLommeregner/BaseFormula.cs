@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FormsLommeregner
 {
@@ -38,10 +39,19 @@ namespace FormsLommeregner
     // formular class for 2 unknown variables
     public abstract class Formula2var : BaseFormula
     {
+        public int varNumber = 2;
         public abstract void Shared();
         public abstract string[] VarName { get; }
-        
+        //the length for the form between the treeview and the other side of the parent form
+        void A()
+        {
+            for (int i = 0; i<2; i++)
+            {
+                
+            }
 
+
+        }
         public int varCount = 2;
         // description of formular
         public abstract string Description { get; }

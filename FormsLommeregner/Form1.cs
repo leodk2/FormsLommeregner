@@ -51,16 +51,22 @@ namespace FormsLommeregner
 
         }
 
+        // when selecting a formula from the tree view
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            // get mathformulary
             MathFormulary mathFormulary = new MathFormulary();
 
+            // loop through all formulas in the MathFormulary
             foreach (BaseFormula formula in mathFormulary.formulas)
             {
+                // if the current formula is the one selected
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
+                    // set the current formula as the currentFormula or the selected formula
                     currentFormula = formula;
                     
+                    // get type of current formula, and do stuff based on the type
                     if (currentFormula.GetType() == typeof(Formula2var))
                     {
                         // do 2 var stuff
@@ -72,25 +78,30 @@ namespace FormsLommeregner
 
                     }
                     
+                    // get out of loop
                     break;
                 }
             }
 
         }
 
-        public void setupFields(MathFormulary formula)
-        {
-            
-        }
-
+        // when calculate button is hit
         private void Calc_Click(object sender, EventArgs e)
         {
+            // if a formula is selected
             if (currentFormula != null)
             {
+                // get variable from field 1
                 var varName = Convert.ToDouble(Var1.Text);
+                
+                // get current formula as formula2var to access certain functions
                 Formula2var formul = currentFormula as Formula2var;
-                Console.WriteLine(formul.Function(varName));
+
+                // write result in result label
                 Result.Text = formul.Function(varName).ToString();
+                
+                // sanity check
+                Console.WriteLine(formul.Function(varName));
             }
         }
     }

@@ -53,6 +53,9 @@ namespace FormsLommeregner
 
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+            SphereCircumference sphereCircumference = new SphereCircumference();
+            sphereCircumference.Shared();
             MathFormulary mathFormulary = new MathFormulary();
 
             foreach (BaseFormula formula in mathFormulary.formulas)
@@ -72,6 +75,7 @@ namespace FormsLommeregner
                     }
                     else if (currentFormula.GetType() == typeof(Formular3var))
                     {
+                        Formular3var f = currentFormula as Formular3var;
                         //Var1.Visible = true; Var2.Visible = true;
 
                     }
@@ -79,6 +83,9 @@ namespace FormsLommeregner
                     break;
                 }
             }
+
+
+            
 
         }
 

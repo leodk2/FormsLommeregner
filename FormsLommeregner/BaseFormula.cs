@@ -39,7 +39,7 @@ namespace FormsLommeregner
     // formular class for 2 unknown variables
     public abstract class Formula2var : BaseFormula
     {
-        public const int varNumber = 2;
+        public const int varCount = 2;
         public int pixel = 656;
         public abstract void Shared();
         public abstract string[] VarName { get; }
@@ -49,10 +49,10 @@ namespace FormsLommeregner
         public void TextboxPlacement()
         {
             List<TextBox> textBoxes = new List<TextBox>();
-            for (int i = 0; i<varNumber; i++)
+            for (int i = 0; i<varCount; i++)
             {
                 textBoxes.Add(new TextBox());
-                int usableSpace = 656/(varNumber+1);
+                int usableSpace = 656/(varCount+1);
 
                 if (i == 0)
                 {
@@ -64,7 +64,6 @@ namespace FormsLommeregner
                 }
             }
         }
-        public int varCount = 2;
         // description of formular
         public abstract string Description { get; }
 

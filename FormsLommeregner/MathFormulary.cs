@@ -64,14 +64,16 @@ namespace FormsLommeregner
         readonly string[] vs = new string[] { "Radius", "Omkreds" };
         // sets the variable name property for use in combobox
         public override string[] VarName { get { return vs; } }
+        public Form1 form1 = new Form1();
+        
 
 
         // A shared method that sets all controls in the form
         public override void Shared()
         {
-            Form1 form1 = new Form1();
             form1.FuncName.Text = Name;
             form1.Description.Text = Description;
+            form1.Variables.Items.Clear();
             form1.Variables.Items.AddRange(VarName);
 
 
@@ -110,7 +112,9 @@ namespace FormsLommeregner
         readonly string[] vs = new string[] { "Sidelængde" };
         //sets the variables of the formula
         public override string[] VarName { get { return vs; } }
-           
+        public Form1 form1 = new Form1();
+        
+
         public override double Function(double sidelaengde)
         {
             double omkreds = sidelaengde * 4;
@@ -125,7 +129,11 @@ namespace FormsLommeregner
 
         public override void Shared()
         {
-            throw new NotImplementedException();
+            form1.FuncName.Text = Name;
+            form1.Description.Text = Description;
+            form1.Variables.Items.Clear();
+            form1.Variables.Items.AddRange(VarName);
+
         }
     }
 

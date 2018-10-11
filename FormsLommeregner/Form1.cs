@@ -60,15 +60,19 @@ namespace FormsLommeregner
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
                     currentFormula = formula;
-                    
+
                     if (currentFormula.GetType() == typeof(Formula2var))
                     {
+                        Formula2var f = currentFormula as Formula2var;
+                        f.TextboxPlacement();
                         // do 2 var stuff
-                        Var1.Visible = true;
+                        //Var1.Visible = true;
+
+
                     }
                     else if (currentFormula.GetType() == typeof(Formular3var))
                     {
-                        Var1.Visible = true; Var2.Visible = true;
+                        //Var1.Visible = true; Var2.Visible = true;
 
                     }
                     

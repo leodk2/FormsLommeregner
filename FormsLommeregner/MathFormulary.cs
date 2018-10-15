@@ -133,7 +133,7 @@ namespace FormsLommeregner
             form1.Description.Text = Description;
             form1.Variables.Items.Clear();
             form1.Variables.Items.AddRange(VarName);
-
+    
         }
     }
 

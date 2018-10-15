@@ -21,6 +21,16 @@ namespace FormsLommeregner
             InitializeComponent();
             //funcList.autoSize = true;
             Variables.Visible = false; Var2.Visible = false; Var1.Visible = false;
+            TextBox text = new TextBox();
+            Controls.Add(text);
+            text.Location = new Point(600, 100);
+            //text.Size = new Size(100, 100);
+            //text.Text = "Hej";
+            text.Visible = true;
+            //text.Focus();
+
+
+
         }
 
         public void Print (string a)
@@ -51,12 +61,11 @@ namespace FormsLommeregner
 
         }
 
-        // when selecting a formula from the tree view
-        private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
-        {
 
+        public void ShowMath()
+        {
             SphereCircumference sphereCircumference = new SphereCircumference();
-            sphereCircumference.Shared();
+            //sphereCircumference.Shared();
             MathFormulary mathFormulary = new MathFormulary();
 
             // loop through all formulas in the MathFormulary
@@ -67,31 +76,83 @@ namespace FormsLommeregner
                 {
                     // set the current formula as the currentFormula or the selected formula
                     currentFormula = formula;
-                    
-                    // get type of current formula, and do stuff based on the type
-                    if (currentFormula.GetType() == typeof(Formula2var))
-                    {
-                        Formula2var f = currentFormula as Formula2var;
-                        f.TextboxPlacement();
-                        // do 2 var stuff
-                        //Var1.Visible = true;
+                    sphereCircumference.Shared();
 
+                    List<TextBox> textBoxes = new List<TextBox>();
+                    for (int i = 0; i < formula.VarCount; i++)
+                    {
+                        textBoxes.Add(new TextBox());
+                        int usableSpace = 656 / (formula.VarCount + 1);
+
+                        TextBox text = new TextBox();
+                        //text.Location = new Point(100, 100);
+                        Form1 form1 = new Form1();
+                        form1.Controls.Add(text);
+                        textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
 
                     }
-                    else if (currentFormula.GetType() == typeof(Formular3var))
+                    foreach (TextBox txtBox in textBoxes)
                     {
-                        Formular3var f = currentFormula as Formular3var;
-                        //Var1.Visible = true; Var2.Visible = true;
-
+                        Controls.Add(txtBox);
                     }
-                    
-                    // get out of loop
-                    break;
                 }
+                
+                // get out of loop
+                break;
             }
+        }
+        public void ShowPhysics()
+        {
+            PhysicsFormulary.PotentialEnergy potential = new PhysicsFormulary.PotentialEnergy();
+            PhysicsFormulary physicsFormulary = new PhysicsFormulary();
 
+            // loop through all formulas in the MathFormulary
+            foreach (BaseFormula formula in physicsFormulary.formulas)
+            {
+                // if the current formula is the one selected
+                if (formula.Name == funcList.SelectedNode.Text)
+                {
+                    // set the current formula as the currentFormula or the selected formula
+                    currentFormula = formula;
+                    potential.Shared();
 
-            
+                    List<TextBox> textBoxes = new List<TextBox>();
+                    for (int i = 0; i < formula.VarCount; i++)
+                    {
+                        textBoxes.Add(new TextBox());
+                        int usableSpace = 656 / (formula.VarCount + 1);
+
+                        TextBox text = new TextBox();
+                        //text.Location = new Point(100, 100);
+                        Form1 form1 = new Form1();
+                        form1.Controls.Add(text);
+                        textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
+
+                    }
+                    foreach (TextBox txtBox in textBoxes)
+                    {
+                        Controls.Add(txtBox);
+                    }
+                }
+
+                // get out of loop
+                break;
+
+            }
+        }
+        // when selecting a formula from the tree view
+        private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            MathFormulary math = new MathFormulary();
+            PhysicsFormulary physicsFormulary = new PhysicsFormulary();
+            if (funcList.Parent.Equals(math.treeNode))
+            {
+                ShowMath();
+            }
+            else if (funcList.Parent.Equals(physicsFormulary.treeNode))
+            {
+                ShowPhysics();
+            }
 
         }
 

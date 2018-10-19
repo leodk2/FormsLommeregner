@@ -13,7 +13,7 @@ namespace FormsLommeregner
     public class Constants
     {
         // math
-        public const double pi = Math.PI;
+        public const double pi = PI;
         public const double tau = 2 * pi;
 
         // physics

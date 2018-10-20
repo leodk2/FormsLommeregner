@@ -57,5 +57,9 @@ namespace FormsLommeregner
                 Console.WriteLine();
             }
         }
+        public void Run()
+        {
+            ShowNetworkInterfaces();
+        }
     }
 }

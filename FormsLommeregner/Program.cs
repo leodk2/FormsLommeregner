@@ -19,7 +19,7 @@ namespace FormsLommeregner
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
             InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
-            internetAndSecurity.GetMacAddress();
+            internetAndSecurity.Run();
                 
             TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
             form.funcList.Nodes.AddRange(treeNodes);

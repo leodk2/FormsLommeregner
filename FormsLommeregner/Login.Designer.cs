@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Email
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 20);
-            this.textBox1.TabIndex = 0;
+            this.Email.Location = new System.Drawing.Point(86, 91);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(221, 20);
+            this.Email.TabIndex = 0;
             // 
             // label1
             // 
@@ -54,7 +54,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 183);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Email);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -63,8 +63,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox Email;
     }
 }

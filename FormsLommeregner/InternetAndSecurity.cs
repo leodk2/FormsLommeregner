@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 namespace FormsLommeregner
 {
     /// <summary>
-    /// This is where we put all of the security and sql stuff
+    /// This is where we put all of the networking, security and sql stuff
     /// </summary>
     //This class shall NOT under any circumstances be public!!!!
     //If you need this class as public then there is something wrong with your code!
@@ -24,12 +24,30 @@ namespace FormsLommeregner
         {
             Console.WriteLine(a);
         }
+        #region SQL
         public void SqlConnect()
         {
-            SqlConnection sqlConnection = new SqlConnection("");
-
-
+            //initialize a new login screen to get the email.text property
+            Login login = new Login();
+            string userid = login.Email.Text;
+            //create the connection to the sql server using my credentials
+            //this should propably get changed at some point
+            SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
+                "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
+                "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            //i'm not really sure what this does but it works
+            SqlCommand sqlCommand = new SqlCommand();
+            //open the connection to the sql database
+            sqlConnection.Open();
+            Print("Åben");
+            
+            
+            //SqlDataReader reader = sqlCommand.ExecuteReader();
+            
+            
         }
+        #endregion
+        #region Internet
         public static object ShowNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
@@ -72,11 +90,12 @@ namespace FormsLommeregner
             Console.WriteLine(nics);
             return nics;
         }
+        #endregion
 
-        
         public void Run()
         {
-            ShowNetworkInterfaces();
+            //ShowNetworkInterfaces();
+            SqlConnect();
         }
     }
 }

@@ -35,11 +35,12 @@
             this.Var1 = new System.Windows.Forms.TextBox();
             this.Var2 = new System.Windows.Forms.TextBox();
             this.Calc = new System.Windows.Forms.Button();
+            this.Variables = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // funcList
             // 
-            this.funcList.Location = new System.Drawing.Point(13, 13);
+            this.funcList.Location = new System.Drawing.Point(12, 14);
             this.funcList.Name = "funcList";
             this.funcList.Size = new System.Drawing.Size(148, 425);
             this.funcList.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             this.Result.AutoSize = true;
             this.Result.Font = new System.Drawing.Font("Cambria Math", 20F);
-            this.Result.Location = new System.Drawing.Point(197, 254);
+            this.Result.Location = new System.Drawing.Point(345, 287);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(137, 151);
             this.Result.TabIndex = 3;
@@ -59,7 +60,7 @@
             // 
             this.FuncName.AutoSize = true;
             this.FuncName.Font = new System.Drawing.Font("Cambria Math", 25F);
-            this.FuncName.Location = new System.Drawing.Point(297, 9);
+            this.FuncName.Location = new System.Drawing.Point(329, 9);
             this.FuncName.Name = "FuncName";
             this.FuncName.Size = new System.Drawing.Size(209, 190);
             this.FuncName.TabIndex = 4;
@@ -68,9 +69,10 @@
             // Description
             // 
             this.Description.AutoSize = true;
-            this.Description.Location = new System.Drawing.Point(566, 327);
+            this.Description.Font = new System.Drawing.Font("Cambria Math", 20F);
+            this.Description.Location = new System.Drawing.Point(551, 249);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(61, 13);
+            this.Description.Size = new System.Drawing.Size(196, 151);
             this.Description.TabIndex = 7;
             this.Description.Text = "Beskrivelse";
             // 
@@ -83,7 +85,7 @@
             // 
             // Var2
             // 
-            this.Var2.Location = new System.Drawing.Point(527, 199);
+            this.Var2.Location = new System.Drawing.Point(382, 199);
             this.Var2.Name = "Var2";
             this.Var2.Size = new System.Drawing.Size(100, 20);
             this.Var2.TabIndex = 9;
@@ -91,18 +93,28 @@
             // 
             // Calc
             // 
-            this.Calc.Location = new System.Drawing.Point(382, 317);
+            this.Calc.Location = new System.Drawing.Point(382, 299);
             this.Calc.Name = "Calc";
             this.Calc.Size = new System.Drawing.Size(75, 23);
             this.Calc.TabIndex = 10;
             this.Calc.Text = "Beregn";
             this.Calc.UseVisualStyleBackColor = true;
+            this.Calc.Click += new System.EventHandler(this.Calc_Click);
+            // 
+            // Variables
+            // 
+            this.Variables.FormattingEnabled = true;
+            this.Variables.Location = new System.Drawing.Point(168, 287);
+            this.Variables.Name = "Variables";
+            this.Variables.Size = new System.Drawing.Size(121, 21);
+            this.Variables.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Variables);
             this.Controls.Add(this.Calc);
             this.Controls.Add(this.Var2);
             this.Controls.Add(this.Var1);
@@ -120,12 +132,13 @@
 
         #endregion
         private System.Windows.Forms.Label Result;
-        private System.Windows.Forms.Label FuncName;
         public System.Windows.Forms.TreeView funcList;
-        private System.Windows.Forms.Label Description;
         private System.Windows.Forms.TextBox Var1;
         private System.Windows.Forms.TextBox Var2;
         private System.Windows.Forms.Button Calc;
+        public System.Windows.Forms.Label FuncName;
+        public System.Windows.Forms.Label Description;
+        public System.Windows.Forms.ComboBox Variables;
     }
 }
 

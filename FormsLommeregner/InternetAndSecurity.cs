@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Net.NetworkInformation;
+using System.Net;
 using System.Text.RegularExpressions;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace FormsLommeregner
 {
@@ -14,43 +17,45 @@ namespace FormsLommeregner
     /// This is where we put all of the security and sql stuff
     /// </summary>
     //This class shall NOT be public!!!!
+    //If you need this class as public then there is something wrong with your code!
     public class InternetAndSecurity
     {
-        public void GetMacAddresss()
+        public static void ShowNetworkInterfaces()
         {
-            /*var macAddr =
-            (
-                from nic in NetworkInterface.GetAllNetworkInterfaces()
-                where nic.OperationalStatus == OperationalStatus.Up
-                select nic.GetPhysicalAddress().ToString()
-            ).FirstOrDefault().ToString();
-            Console.WriteLine(macAddr);*/
-
-
-        }
-
-        public string GetMacAddress()
-        {
-            string macAddresses = string.Empty;
-
-            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            Console.WriteLine("Interface information for {0}",
+                    computerProperties.HostName);
+            if (nics == null || nics.Length < 1)
             {
-                if (nic.OperationalStatus == OperationalStatus.Up)
-                {
-                    macAddresses += nic.GetPhysicalAddress().ToString();
-                    break;
-                }
+                Console.WriteLine("  No network interfaces found.");
+                return;
             }
-            //This doesn't rlly work yet
-            //It is for the formatting for the MAC-address
-            //It doesn't hinder the programs ability to run though
-            var regex = "(.{2})(.{2})(.{2})(.{2})(.{2})(.{2})";
-            var replace = "$1:$2:$3:$4:$5:$6";
-            var newformat = Regex.Replace(macAddresses, regex, replace);
 
-            Console.WriteLine(macAddresses);
-            return macAddresses;
+            Console.WriteLine("  Number of interfaces .................... : {0}", nics.Length);
+            foreach (NetworkInterface adapter in nics)
+            {
+                IPInterfaceProperties properties = adapter.GetIPProperties(); //  .GetIPInterfaceProperties();
+                Console.WriteLine();
+                Console.WriteLine(adapter.Description);
+                Console.WriteLine(String.Empty.PadLeft(adapter.Description.Length, '='));
+                Console.WriteLine("  Interface type .......................... : {0}", adapter.NetworkInterfaceType);
+                Console.Write("  Physical address ........................ : ");
+                PhysicalAddress address = adapter.GetPhysicalAddress();
+                byte[] bytes = address.GetAddressBytes();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    // Display the physical address in hexadecimal.
+                    Console.Write("{0}", bytes[i].ToString("X2"));
+                    // Insert a hyphen after each byte, unless we are at the end of the 
+                    // address.
+                    if (i != bytes.Length - 1)
+                    {
+                        Console.Write("-");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
-
     }
 }

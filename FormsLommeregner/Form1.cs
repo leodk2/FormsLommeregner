@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Runtime.InteropServices;
+using System.Windows.Input;
 
 namespace FormsLommeregner
 {
@@ -58,9 +59,19 @@ namespace FormsLommeregner
 
         }
 
-        public void setupFields(MathFormulary formula)
+        public void SetupFields(MathFormulary formula)
         {
             
+        }
+
+        
+
+        private void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FormsLommeregner
 {
     static class Program
@@ -19,6 +20,7 @@ namespace FormsLommeregner
             Form1 form = new Form1();
             TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
             form.funcList.Nodes.AddRange(treeNodes);
+            
 
 
 

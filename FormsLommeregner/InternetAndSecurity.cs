@@ -16,11 +16,21 @@ namespace FormsLommeregner
     /// <summary>
     /// This is where we put all of the security and sql stuff
     /// </summary>
-    //This class shall NOT be public!!!!
+    //This class shall NOT under any circumstances be public!!!!
     //If you need this class as public then there is something wrong with your code!
     public class InternetAndSecurity
     {
-        public static void ShowNetworkInterfaces()
+        static void Print(string a)
+        {
+            Console.WriteLine(a);
+        }
+        public void SqlConnect()
+        {
+            SqlConnection sqlConnection = new SqlConnection("");
+
+
+        }
+        public static object ShowNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -29,7 +39,7 @@ namespace FormsLommeregner
             if (nics == null || nics.Length < 1)
             {
                 Console.WriteLine("  No network interfaces found.");
-                return;
+                return null;
             }
 
             Console.WriteLine("  Number of interfaces .................... : {0}", nics.Length);
@@ -53,10 +63,17 @@ namespace FormsLommeregner
                     {
                         Console.Write("-");
                     }
+                    Print(nics.ToString());
+                       
                 }
-                Console.WriteLine();
+                //Console.WriteLine(nics);
+                return nics;
             }
+            Console.WriteLine(nics);
+            return nics;
         }
+
+        
         public void Run()
         {
             ShowNetworkInterfaces();

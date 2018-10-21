@@ -22,6 +22,12 @@ namespace FormsLommeregner
     {
         static void Print(string a)
         {
+            a = a.ToString();
+            Console.WriteLine(a);
+        }
+        static void Print(object a)
+        {
+            a = a.ToString();
             Console.WriteLine(a);
         }
         #region SQL
@@ -30,23 +36,54 @@ namespace FormsLommeregner
             //initialize a new login screen to get the email.text property
             Login login = new Login();
             string userid = login.Email.Text;
+            string Pass = userid;
             //create the connection to the sql server using my credentials
             //this should propably get changed at some point
-            SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
+            SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
+                "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
                 "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
                 "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            
             //i'm not really sure what this does but it works
-            SqlCommand sqlCommand = new SqlCommand();
+            
             //open the connection to the sql database
             sqlConnection.Open();
             Print("Åben");
             
-            
+
             //SqlDataReader reader = sqlCommand.ExecuteReader();
-            
+            try
+            {
+                SqlDataReader reader = null;
+                SqlCommand cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if(reader["UID"].ToString() == "leo@strandjaegervej.dk")
+                    {
+                        Print(reader["CODE1"]);
+                    }
+                    else
+                    {
+                        Print(reader["UID"]);
+
+                        Print(reader["MAC"]);
+                        Print(reader["NOOFMACS"]);
+                    }
+                    
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                Print(e.ToString());
+            }
             
         }
         #endregion
+
+
         #region Internet
         public static object ShowNetworkInterfaces()
         {
@@ -94,7 +131,7 @@ namespace FormsLommeregner
 
         public void Run()
         {
-            //ShowNetworkInterfaces();
+            ShowNetworkInterfaces();
             SqlConnect();
         }
     }

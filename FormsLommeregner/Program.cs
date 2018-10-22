@@ -25,7 +25,7 @@ namespace FormsLommeregner
             InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
             internetAndSecurity.Run();
 
-            if (internetAndSecurity.SqlReader("Uid", "abckim@strandjaegervej.dk", "Code1", internetAndSecurity.sqlConnection))
+            if (internetAndSecurity.SqlReader("Uid", "fkim@strandjaegervej.dk", "Code1", internetAndSecurity.sqlConnection))
             {
                 Form1 form = new Form1();
                 TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };

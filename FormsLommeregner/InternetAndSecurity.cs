@@ -49,13 +49,7 @@ namespace FormsLommeregner
             string SqlPass = SqlUserId;
             //create the connection to the sql server using my credentials
 
-            /*
-            //this should propably get changed at some point
-            SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
-                "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
-                "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
-                "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
-            */
+            
 
             //open the connection to the sql database
             sqlConnection.Open();

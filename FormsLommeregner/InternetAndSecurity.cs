@@ -35,8 +35,8 @@ namespace FormsLommeregner
         {
             //initialize a new login screen to get the email.text property
             Login login = new Login();
-            string userid = login.Email.Text;
-            string Pass = userid;
+            string SqlUserId = login.Email.Text;
+            string SqlPass = SqlUserId;
             //create the connection to the sql server using my credentials
             //this should propably get changed at some point
             SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
@@ -44,34 +44,29 @@ namespace FormsLommeregner
                 "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
                 "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
             
-            //i'm not really sure what this does but it works
-            
             //open the connection to the sql database
             sqlConnection.Open();
             Print("Åben");
+            //I don't think that this method should be here in the final release of the program
+            SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
             
+        }
 
-            //SqlDataReader reader = sqlCommand.ExecuteReader();
+        //this method is run whenever we need to read something from the SQL database
+        public void SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
+        {
             try
             {
-                SqlDataReader reader = null;
+
                 SqlCommand cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
-                reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    if(reader["UID"].ToString() == "leo@strandjaegervej.dk")
+                    if (reader[columnHeader].ToString() == userToLookFor)
                     {
-                        Print(reader["CODE1"]);
+                        Print(reader[ItemToLookFor]);
                     }
-                    else
-                    {
-                        Print(reader["UID"]);
-
-                        Print(reader["MAC"]);
-                        Print(reader["NOOFMACS"]);
-                    }
-                    
-
 
                 }
             }
@@ -79,7 +74,7 @@ namespace FormsLommeregner
             {
                 Print(e.ToString());
             }
-            
+
         }
         #endregion
 
@@ -131,7 +126,7 @@ namespace FormsLommeregner
 
         public void Run()
         {
-            ShowNetworkInterfaces();
+            //ShowNetworkInterfaces();
             SqlConnect();
         }
     }

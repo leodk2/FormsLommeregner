@@ -22,13 +22,13 @@ namespace FormsLommeregner
     {
 
         //this should propably get changed at some point
-        public SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
+        static public SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
             "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
             "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
             "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
 
-        SqlCommand cmd;
-        SqlDataReader reader;
+        static SqlCommand cmd;
+        static SqlDataReader reader;
 
         static void Print(string a)
         {
@@ -41,7 +41,7 @@ namespace FormsLommeregner
             Console.WriteLine(a);
         }
         #region SQL
-        public void SqlConnect()
+        public static void SqlConnect()
         {
             //initialize a new login screen to get the email.text property
             Login login = new Login();
@@ -60,7 +60,7 @@ namespace FormsLommeregner
         }
 
         //this method is run whenever we need to read something from the SQL database
-        public bool SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
+        public static bool SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
         {
             try
             {
@@ -70,11 +70,14 @@ namespace FormsLommeregner
                     cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
                     Console.WriteLine("new cmd");
                 }
-                if (reader == null)
+                if (reader != null)
                 {
-                    reader = cmd.ExecuteReader();
-                    Console.WriteLine("new reader");
+                    reader.Close();
                 }
+                reader = cmd.ExecuteReader();
+                Console.WriteLine("new reader");
+
+                Console.WriteLine(userToLookFor);
 
                 // reads and stuff
                 while (reader.Read())
@@ -82,15 +85,18 @@ namespace FormsLommeregner
                     if (reader[columnHeader].ToString() == userToLookFor)
                     {
                         Print(reader[ItemToLookFor]);
+                        Console.WriteLine("true");
                         return true;
                     }
 
                 }
+                Console.WriteLine("false");
                 return false;
             }
             catch (Exception e)
             {
                 Print(e.ToString());
+                Console.WriteLine("false exception");
                 return false;
             }
 

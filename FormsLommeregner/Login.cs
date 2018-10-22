@@ -19,8 +19,7 @@ namespace FormsLommeregner
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InternetAndSecurity IAS = new InternetAndSecurity();
-            if (IAS.SqlReader("Uid", EmailField.Text, "Code1", IAS.sqlConnection))
+            if (InternetAndSecurity.SqlReader("Uid", EmailField.Text, "Code1", InternetAndSecurity.sqlConnection))
             {
                 Console.WriteLine("did this");
                 this.Close();

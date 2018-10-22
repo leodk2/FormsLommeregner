@@ -19,7 +19,15 @@ namespace FormsLommeregner
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            InternetAndSecurity IAS = new InternetAndSecurity();
+            if (IAS.SqlReader("Uid", EmailField.Text, "Code1", IAS.sqlConnection))
+            {
+                Console.WriteLine("did this");
+                this.Close();
+                Form1 form = new Form1();
+                Application.Run(form);
+                
+            }
         }
     }
 }

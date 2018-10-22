@@ -20,6 +20,16 @@ namespace FormsLommeregner
     //If you need this class as public then there is something wrong with your code!
     public class InternetAndSecurity
     {
+
+        //this should propably get changed at some point
+        public SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
+            "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
+            "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
+            "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+
+        SqlCommand cmd;
+        SqlDataReader reader;
+
         static void Print(string a)
         {
             a = a.ToString();
@@ -35,44 +45,59 @@ namespace FormsLommeregner
         {
             //initialize a new login screen to get the email.text property
             Login login = new Login();
-            string SqlUserId = login.Email.Text;
+            string SqlUserId = login.EmailField.Text;
             string SqlPass = SqlUserId;
             //create the connection to the sql server using my credentials
+
+            /*
             //this should propably get changed at some point
             SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
                 "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
                 "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
                 "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
-            
+            */
+
             //open the connection to the sql database
             sqlConnection.Open();
             Print("Åben");
             //I don't think that this method should be here in the final release of the program
-            SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
+            //SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
             
         }
 
         //this method is run whenever we need to read something from the SQL database
-        public void SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
+        public bool SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
         {
             try
             {
+                //!! creates new cmd and reader. Problem is if it's called in different instances, it'll create a new for each
+                if (cmd == null)
+                {
+                    cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
+                    Console.WriteLine("new cmd");
+                }
+                if (reader == null)
+                {
+                    reader = cmd.ExecuteReader();
+                    Console.WriteLine("new reader");
+                }
 
-                SqlCommand cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
-                SqlDataReader reader = cmd.ExecuteReader();
-
+                // reads and stuff
                 while (reader.Read())
                 {
                     if (reader[columnHeader].ToString() == userToLookFor)
                     {
                         Print(reader[ItemToLookFor]);
+                        return true;
                     }
 
                 }
+                return false;
             }
             catch (Exception e)
             {
                 Print(e.ToString());
+                return false;
             }
 
         }

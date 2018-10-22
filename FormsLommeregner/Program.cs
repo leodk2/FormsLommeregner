@@ -24,40 +24,6 @@ namespace FormsLommeregner
                 
             TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
             form.funcList.Nodes.AddRange(treeNodes);
-            
-
-
-
-            /*
-            switch (form.funcList.SelectedNode.ToString())
-            {
-                case "cirkelomkreds":
-
-                    break;
-
-
-            }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             Application.Run(form);
 

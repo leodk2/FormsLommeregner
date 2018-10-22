@@ -29,7 +29,7 @@ namespace FormsLommeregner
             
             if (InternetAndSecurity.SqlReader("Uid", "abckim@strandjaegervej.dk", "Code1", InternetAndSecurity.sqlConnection))
             {
-                Form1 form = new Form1();
+                Formelsamling form = new Formelsamling();
                 TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
                 form.funcList.Nodes.AddRange(treeNodes);
                 Application.Run(form);

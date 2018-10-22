@@ -21,11 +21,12 @@ namespace FormsLommeregner
         {
             if (InternetAndSecurity.SqlReader("Uid", EmailField.Text, "Code1", InternetAndSecurity.sqlConnection))
             {
+                this.Hide();
+                Formelsamling formelsamling = new Formelsamling();
+                formelsamling.Show();
                 Console.WriteLine("did this");
-                this.Close();
-                Form1 form = new Form1();
-                Application.Run(form);
-                
+
+
             }
         }
     }

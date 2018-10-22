@@ -22,8 +22,8 @@ namespace FormsLommeregner
 
             //Form1 form = new Form1();
             //Login login = new Login();
-            //InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
-            //internetAndSecurity.Run();
+            InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
+            internetAndSecurity.Run();
 
             InternetAndSecurity.SqlConnect();
             

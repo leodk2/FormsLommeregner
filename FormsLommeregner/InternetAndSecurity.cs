@@ -48,27 +48,22 @@ namespace FormsLommeregner
             
             //open the connection to the sql database
             sqlConnection.Open();
-            Print("Åben");
             
-
-            //SqlDataReader reader = sqlCommand.ExecuteReader();
             try
             {
                 SqlDataReader reader = null;
                 SqlCommand cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
                 reader = cmd.ExecuteReader();
+                
                 while (reader.Read())
                 {
-                    if(reader["UID"].ToString() == "leo@strandjaegervej.dk")
+                    if(reader["Uid"].ToString().Equals("kim@strandjaegervej.dk"))
                     {
-                        Print(reader["CODE1"]);
+                        Print("Det virker");
                     }
                     else
                     {
-                        Print(reader["UID"]);
-
-                        Print(reader["MAC"]);
-                        Print(reader["NOOFMACS"]);
+                        break;
                     }
                     
 

@@ -22,10 +22,12 @@ namespace FormsLommeregner
 
             //Form1 form = new Form1();
             //Login login = new Login();
-            InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
-            internetAndSecurity.Run();
+            //InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
+            //internetAndSecurity.Run();
 
-            if (internetAndSecurity.SqlReader("Uid", "abckim@strandjaegervej.dk", "Code1", internetAndSecurity.sqlConnection))
+            InternetAndSecurity.SqlConnect();
+            
+            if (InternetAndSecurity.SqlReader("Uid", "abckim@strandjaegervej.dk", "Code1", InternetAndSecurity.sqlConnection))
             {
                 Form1 form = new Form1();
                 TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };

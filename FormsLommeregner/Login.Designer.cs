@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Email = new System.Windows.Forms.TextBox();
+            this.EmailField = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Email
+            // EmailField
             // 
-            this.Email.Location = new System.Drawing.Point(86, 91);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(221, 20);
-            this.Email.TabIndex = 0;
+            this.EmailField.Location = new System.Drawing.Point(86, 91);
+            this.EmailField.Name = "EmailField";
+            this.EmailField.Size = new System.Drawing.Size(221, 20);
+            this.EmailField.TabIndex = 0;
             // 
             // label1
             // 
@@ -48,13 +49,24 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Indtast e-mail";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(156, 117);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Login";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 183);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Email);
+            this.Controls.Add(this.EmailField);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -64,6 +76,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox Email;
+        public System.Windows.Forms.TextBox EmailField;
+        private System.Windows.Forms.Button button1;
     }
 }

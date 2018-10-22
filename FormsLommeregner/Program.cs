@@ -27,7 +27,7 @@ namespace FormsLommeregner
 
             InternetAndSecurity.SqlConnect();
             
-            if (InternetAndSecurity.SqlReader("Uid", "abckim@strandjaegervej.dk", "Code1", InternetAndSecurity.sqlConnection))
+            if (InternetAndSecurity.SqlReader("Uid", "gkim@strandjaegervej.dk", "Code1", InternetAndSecurity.sqlConnection))
             {
                 Formelsamling form = new Formelsamling();
                 TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
@@ -37,6 +37,9 @@ namespace FormsLommeregner
             else
             {
                 Login login = new Login();
+                Formelsamling form = new Formelsamling();
+                TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
+                form.funcList.Nodes.AddRange(treeNodes);
                 Application.Run(login);
             }
                 

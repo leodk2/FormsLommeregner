@@ -12,6 +12,10 @@ namespace FormsLommeregner
 {
     public partial class Login : Form
     {
+        static void Print(string a)
+        {
+            Console.WriteLine(a);
+        }
         public Login()
         {
             InitializeComponent();
@@ -23,8 +27,10 @@ namespace FormsLommeregner
             {
                 this.Hide();
                 Formelsamling formelsamling = new Formelsamling();
+                TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
+                formelsamling.funcList.Nodes.AddRange(treeNodes);
                 formelsamling.Show();
-                Console.WriteLine("did this");
+                Print("did this");
 
 
             }

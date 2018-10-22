@@ -105,7 +105,7 @@ namespace FormsLommeregner
 
 
         #region Internet
-        public static object ShowNetworkInterfaces()
+        public static void ShowNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -114,7 +114,7 @@ namespace FormsLommeregner
             if (nics == null || nics.Length < 1)
             {
                 Console.WriteLine("  No network interfaces found.");
-                return null;
+                return;
             }
 
             Console.WriteLine("  Number of interfaces .................... : {0}", nics.Length);
@@ -138,21 +138,17 @@ namespace FormsLommeregner
                     {
                         Console.Write("-");
                     }
-                    Print(nics.ToString());
-                       
                 }
-                //Console.WriteLine(nics);
-                return nics;
+                Console.WriteLine();
             }
-            Console.WriteLine(nics);
-            return nics;
         }
+
         #endregion
 
         public void Run()
         {
-            //ShowNetworkInterfaces();
-            SqlConnect();
+            ShowNetworkInterfaces();
+            //SqlConnect();
         }
     }
 }

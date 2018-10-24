@@ -1,6 +1,6 @@
 ﻿namespace FormsLommeregner
 {
-    partial class Form1
+    partial class Formelsamling
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,7 @@
             this.Variables.Size = new System.Drawing.Size(121, 21);
             this.Variables.TabIndex = 11;
             // 
-            // Form1
+            // Formelsamling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,9 +122,8 @@
             this.Controls.Add(this.FuncName);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.funcList);
-            this.Name = "Form1";
+            this.Name = "Formelsamling";
             this.Text = "Form1";
-            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 
 namespace FormsLommeregner
 {
-    public partial class Form1 : Form
+    public partial class Formelsamling : Form
     {
         public BaseFormula currentFormula;
 
-        public Form1()
+        public Formelsamling()
         {
             InitializeComponent();
             //funcList.autoSize = true;
@@ -86,7 +86,7 @@ namespace FormsLommeregner
 
                         TextBox text = new TextBox();
                         //text.Location = new Point(100, 100);
-                        Form1 form1 = new Form1();
+                        Formelsamling form1 = new Formelsamling();
                         form1.Controls.Add(text);
                         textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
 
@@ -124,7 +124,7 @@ namespace FormsLommeregner
 
                         TextBox text = new TextBox();
                         //text.Location = new Point(100, 100);
-                        Form1 form1 = new Form1();
+                        Formelsamling form1 = new Formelsamling();
                         form1.Controls.Add(text);
                         textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
 

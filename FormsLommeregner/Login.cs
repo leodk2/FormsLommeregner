@@ -12,9 +12,28 @@ namespace FormsLommeregner
 {
     public partial class Login : Form
     {
+        static void Print(string a)
+        {
+            Console.WriteLine(a);
+        }
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (InternetAndSecurity.SqlReader("Uid", EmailField.Text, "Code1", InternetAndSecurity.sqlConnection))
+            {
+                this.Hide();
+                Formelsamling formelsamling = new Formelsamling();
+                TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
+                formelsamling.funcList.Nodes.AddRange(treeNodes);
+                formelsamling.Show();
+                Print("did this");
+
+
+            }
         }
     }
 }

@@ -54,7 +54,7 @@ namespace FormsLommeregner
 
 
 
-            Form1 form1 = new Form1();
+            Formelsamling form1 = new Formelsamling();
             public override void Shared()
             {
                 form1.FuncName.Text = Name;

@@ -64,7 +64,7 @@ namespace FormsLommeregner
         readonly string[] vs = new string[] { "Radius", "Omkreds" };
         // sets the variable name property for use in combobox
         public override string[] VarName { get { return vs; } }
-        public Form1 form1 = new Form1();
+        public Formelsamling form1 = new Formelsamling();
         
 
 
@@ -112,7 +112,7 @@ namespace FormsLommeregner
         readonly string[] vs = new string[] { "Sidelængde" };
         //sets the variables of the formula
         public override string[] VarName { get { return vs; } }
-        public Form1 form1 = new Form1();
+        public Formelsamling form1 = new Formelsamling();
         
 
         public override double Function(double sidelaengde)

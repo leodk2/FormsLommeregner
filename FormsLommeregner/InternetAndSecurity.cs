@@ -20,6 +20,16 @@ namespace FormsLommeregner
     //If you need this class as public then there is something wrong with your code!
     public class InternetAndSecurity
     {
+
+        //this should propably get changed at some point
+        static public SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
+            "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
+            "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
+            "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+
+        static SqlCommand cmd;
+        static SqlDataReader reader;
+
         static void Print(string a)
         {
             a = a.ToString();
@@ -31,48 +41,63 @@ namespace FormsLommeregner
             Console.WriteLine(a);
         }
         #region SQL
-        public void SqlConnect()
+        public static void SqlConnect()
         {
             //initialize a new login screen to get the email.text property
             Login login = new Login();
-            string SqlUserId = login.Email.Text;
+            string SqlUserId = login.EmailField.Text;
             string SqlPass = SqlUserId;
             //create the connection to the sql server using my credentials
-            //this should propably get changed at some point
-            SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
-                "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
-                "Password = Bionicle2018; Connect Timeout = 60; Encrypt = True; " +
-                "TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+
             
+
             //open the connection to the sql database
             sqlConnection.Open();
             Print("Åben");
             //I don't think that this method should be here in the final release of the program
-            SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
+            //SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
             
         }
 
         //this method is run whenever we need to read something from the SQL database
-        public void SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
+        public static bool SqlReader(string columnHeader, string userToLookFor, string ItemToLookFor, SqlConnection sqlConnection)
         {
             try
             {
+                //!! creates new cmd and reader. Problem is if it's called in different instances, it'll create a new for each
+                if (cmd == null)
+                {
+                    cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
+                    Console.WriteLine("new cmd");
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                reader = cmd.ExecuteReader();
+                Console.WriteLine("new reader");
 
-                SqlCommand cmd = new SqlCommand("select * from dbo.user_Codes", sqlConnection);
-                SqlDataReader reader = cmd.ExecuteReader();
+                Console.WriteLine(userToLookFor);
 
+                // reads and stuff
                 while (reader.Read())
                 {
                     if (reader[columnHeader].ToString() == userToLookFor)
                     {
                         Print(reader[ItemToLookFor]);
+                        Console.WriteLine("true");
+                        return true;
                     }
 
                 }
+                Console.WriteLine("false");
+                return false;
             }
             catch (Exception e)
             {
                 Print(e.ToString());
+                Console.WriteLine("false exception");
+                return false;
             }
 
         }
@@ -80,7 +105,7 @@ namespace FormsLommeregner
 
 
         #region Internet
-        public static object ShowNetworkInterfaces()
+        public static void ShowNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -89,7 +114,7 @@ namespace FormsLommeregner
             if (nics == null || nics.Length < 1)
             {
                 Console.WriteLine("  No network interfaces found.");
-                return null;
+                return;
             }
 
             Console.WriteLine("  Number of interfaces .................... : {0}", nics.Length);
@@ -113,21 +138,17 @@ namespace FormsLommeregner
                     {
                         Console.Write("-");
                     }
-                    Print(nics.ToString());
-                       
                 }
-                //Console.WriteLine(nics);
-                return nics;
+                Console.WriteLine();
             }
-            Console.WriteLine(nics);
-            return nics;
         }
+
         #endregion
 
         public void Run()
         {
-            //ShowNetworkInterfaces();
-            SqlConnect();
+            ShowNetworkInterfaces();
+            //SqlConnect();
         }
     }
 }

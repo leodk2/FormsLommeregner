@@ -18,9 +18,8 @@ namespace FormsLommeregner
     /// </summary>
     //This class shall NOT under any circumstances be public!!!!
     //If you need this class as public then there is something wrong with your code!
-    public class InternetAndSecurity
+    public class SQL
     {
-
         //this should propably get changed at some point
         static public SqlConnection sqlConnection = new SqlConnection("Data Source = lommeregner.database.windows.net; " +
             "Initial Catalog = LommeregnerInLogs; Integrated Security = False; User ID = Leo; " +
@@ -40,7 +39,7 @@ namespace FormsLommeregner
             a = a.ToString();
             Console.WriteLine(a);
         }
-        #region SQL
+        
         public static void SqlConnect()
         {
             //initialize a new login screen to get the email.text property
@@ -49,14 +48,14 @@ namespace FormsLommeregner
             string SqlPass = SqlUserId;
             //create the connection to the sql server using my credentials
 
-            
+
 
             //open the connection to the sql database
             sqlConnection.Open();
             Print("Åben");
             //I don't think that this method should be here in the final release of the program
             //SqlReader("Uid", "kim@strandjaegervej.dk", "Code1", sqlConnection);
-            
+
         }
 
         //this method is run whenever we need to read something from the SQL database
@@ -75,7 +74,7 @@ namespace FormsLommeregner
                     reader.Close();
                 }
                 reader = cmd.ExecuteReader();
-                Console.WriteLine("new reader");
+                Print("new reader");
 
                 Console.WriteLine(userToLookFor);
 
@@ -96,16 +95,30 @@ namespace FormsLommeregner
             catch (Exception e)
             {
                 Print(e.ToString());
-                Console.WriteLine("false exception");
+                Print("false exception");
                 return false;
             }
 
         }
-        #endregion
+        public SqlParameter SqlAddMac()
+        {
+            sqlConnection.Open();
+            cmd = new SqlCommand ("INSERT INTO user_Codes(Mac) VALUES(@Mac)", sqlConnection);
+            var add = cmd.Parameters.AddWithValue("@Mac", InternetAndSecurity.ShowNetworkInterfaces());
+            cmd.ExecuteNonQuery();
+            return add;
+            
+        }
+
+    }
+    public class InternetAndSecurity
+    {
+
+        
 
 
         #region Internet
-        public static void ShowNetworkInterfaces()
+        public static PhysicalAddress ShowNetworkInterfaces()
         {
             IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
             NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
@@ -114,15 +127,15 @@ namespace FormsLommeregner
             if (nics == null || nics.Length < 1)
             {
                 Console.WriteLine("  No network interfaces found.");
-                return;
+                //return null;
             }
 
             Console.WriteLine("  Number of interfaces .................... : {0}", nics.Length);
             foreach (NetworkInterface adapter in nics)
             {
-                IPInterfaceProperties properties = adapter.GetIPProperties(); //  .GetIPInterfaceProperties();
+                //IPInterfaceProperties properties = adapter.GetIPProperties(); //  .GetIPInterfaceProperties();
                 Console.WriteLine();
-                Console.WriteLine(adapter.Description);
+                //Console.WriteLine(adapter.Description);
                 Console.WriteLine(String.Empty.PadLeft(adapter.Description.Length, '='));
                 Console.WriteLine("  Interface type .......................... : {0}", adapter.NetworkInterfaceType);
                 Console.Write("  Physical address ........................ : ");
@@ -137,10 +150,15 @@ namespace FormsLommeregner
                     if (i != bytes.Length - 1)
                     {
                         Console.Write("-");
+                        //return address;
                     }
+                    
                 }
                 Console.WriteLine();
+                address = PhysicalAddress.Parse(address.ToString());
+                return  address;
             }
+            return null;
         }
 
         #endregion

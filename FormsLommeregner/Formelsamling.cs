@@ -18,7 +18,9 @@ namespace FormsLommeregner
 
         public Formelsamling()
         {
+            
             InitializeComponent();
+            /*
             //funcList.autoSize = true;
             Variables.Visible = false; Var2.Visible = false; Var1.Visible = false;
             TextBox text = new TextBox();
@@ -28,7 +30,7 @@ namespace FormsLommeregner
             //text.Text = "Hej";
             text.Visible = true;
             //text.Focus();
-
+            */
 
 
         }
@@ -88,6 +90,7 @@ namespace FormsLommeregner
                         //text.Location = new Point(100, 100);
                         Formelsamling form1 = new Formelsamling();
                         form1.Controls.Add(text);
+                        text.Visible = true;
                         textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
 
                     }
@@ -112,48 +115,47 @@ namespace FormsLommeregner
                 // if the current formula is the one selected
                 if (formula.Name == funcList.SelectedNode.Text)
                 {
+                    
                     // set the current formula as the currentFormula or the selected formula
                     currentFormula = formula;
                     potential.Shared();
-
-                    List<TextBox> textBoxes = new List<TextBox>();
-                    for (int i = 0; i < formula.VarCount; i++)
-                    {
-                        textBoxes.Add(new TextBox());
-                        int usableSpace = 656 / (formula.VarCount + 1);
-
-                        TextBox text = new TextBox();
-                        //text.Location = new Point(100, 100);
-                        Formelsamling form1 = new Formelsamling();
-                        form1.Controls.Add(text);
-                        textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
-
-                    }
-                    foreach (TextBox txtBox in textBoxes)
-                    {
-                        Controls.Add(txtBox);
-                    }
+                    PhysicsFormulary.TextboxPlacement(currentFormula.VarCount, this);                 
                 }
-
                 // get out of loop
                 break;
-
             }
         }
+
         // when selecting a formula from the tree view
         private void funcList_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            
+
             MathFormulary math = new MathFormulary();
             PhysicsFormulary physicsFormulary = new PhysicsFormulary();
-            if (funcList.Parent.Equals(math.treeNode))
+
+            Print("checks " + e.Node.Text);
+            foreach (BaseFormula formula in math.formulas)
             {
+                if (formula.Name == e.Node.Text)
+                {
+                    Print("found");
+                    BaseFormulary.TextboxPlacement(formula.VarCount, this);
+                    break;
+                }
+            }
+            /*
+            if (e.Node.Name == "matematik")
+            {
+                Print("Matematik");
                 ShowMath();
             }
-            else if (funcList.Parent.Equals(physicsFormulary.treeNode))
+            else if (funcList.Parent.Name.Equals(physicsFormulary.treeNode.Name))
             {
                 ShowPhysics();
             }
-
+            */
+            
         }
 
         // when calculate button is hit

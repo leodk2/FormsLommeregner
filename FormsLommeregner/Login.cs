@@ -23,7 +23,7 @@ namespace FormsLommeregner
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (InternetAndSecurity.SqlReader("Uid", EmailField.Text, "Code1", InternetAndSecurity.sqlConnection))
+            if (SQL.SqlReader("Uid", EmailField.Text,  "Mac", SQL.sqlConnection))
             {
                 this.Hide();
                 Formelsamling formelsamling = new Formelsamling();

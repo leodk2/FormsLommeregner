@@ -53,11 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseFormula.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Formelsamling.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Formelsamling.Designer.cs">
+      <DependentUpon>Formelsamling.cs</DependentUpon>
     </Compile>
     <Compile Include="InternetAndSecurity.cs" />
     <Compile Include="Login.cs">
@@ -70,8 +70,8 @@
     <Compile Include="PhysicsFormulary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Formelsamling.resx">
+      <DependentUpon>Formelsamling.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

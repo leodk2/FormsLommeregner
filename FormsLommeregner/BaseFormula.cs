@@ -26,6 +26,30 @@ namespace FormsLommeregner
         {
 
         }
+        public static void TextboxPlacement(int VarCount, Form form1)
+        {
+            List<TextBox> textBoxes = new List<TextBox>();
+            for (int i = 0; i < VarCount; i++)
+            {
+                textBoxes.Add(new TextBox());
+                int usableSpace = 656 / (VarCount + 1);
+
+                if (i == 0)
+                {
+                    TextBox text = new TextBox();
+                    text.Location = new Point(100, 100);
+                    text.Size = new Size(100, 50);
+                    //Formelsamling form1 = new Formelsamling();
+                    form1.Controls.Add(text);
+                    text.Visible = true;
+                    textBoxes[textBoxes.Count-1].Location = new Point(usableSpace * (i + 1));
+                }
+                else
+                {
+                    textBoxes[textBoxes.Count-1].Location = new Point(usableSpace * i);
+                }
+            }
+        }
 
     }
 
@@ -46,32 +70,9 @@ namespace FormsLommeregner
         public override int VarCount { get { return 2; } }
         //the number of pixels for the space betweem the form or the treeview and the other side of the parent form is 656 pixeles. 
         //this WILL change if you change the size of the form or the place of the treeview
-        /*
-        public void TextboxPlacement()
-        {
-            List<TextBox> textBoxes = new List<TextBox>();
-            for (int i = 0; i<varCount; i++)
-            {
-                textBoxes.Add(new TextBox());
-                int usableSpace = 656/(varCount+1);
+        
 
-                if (i == 0)
-                {
-                    TextBox text = new TextBox();
-                    text.Location = new Point(100, 100);
-                    Form1 form1 = new Form1();
-                    form1.Controls.Add(text);
-                    textBoxes[-1].Location = new Point(usableSpace * (i + 1));
-                }
-                else
-                {
-                    textBoxes[-1].Location = new Point(usableSpace * i);
-                }
-
-                
-            }
-        }
-        */
+        
         // description of formular
         public abstract string Description { get; }
 

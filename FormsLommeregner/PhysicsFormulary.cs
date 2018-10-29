@@ -85,7 +85,37 @@ namespace FormsLommeregner
 
         }
         #endregion
+        public class Spænding : Formular3var
+        {
+            public override string Name { get { return "Modstand"; } }
+            public override int VarCount { get { return 3; } }
+            public override string Description { get { return "Beregn spændingen ud fra modstand og strømstyrke";} }
+            readonly string[] vs = new string[] { "Spænding", "Modstand", "Strømstyrke" };
+            public override string[] VarName { get { return vs; } }
 
-    }
+            public override double Function(double modstand, double strømstyrke)
+            {
+                double spænding = modstand * strømstyrke;
+                return spænding;
+            }
+            public override double FunctionTwo(double spænding, double strømstyrke)
+            {
+                double modstand = spænding / strømstyrke;
+                return modstand;
+            }
+            public override double FunctionThree(double spændning, double modstand)
+            {
+                double strømstyrke = spændning / modstand;
+                return strømstyrke;
+            }
 
+            Formelsamling form1 = new Formelsamling();
+            public override void Shared()
+            {
+                form1.FuncName.Text = Name;
+                form1.Description.Text = Description;
+                form1.Variables.Items.Clear();
+                form1.Variables.Items.AddRange(VarName);
+            }
+        }
 }

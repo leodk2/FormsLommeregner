@@ -14,6 +14,10 @@ namespace FormsLommeregner
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+        static void Print(string a)
+        {
+            Console.WriteLine(a);
+        }
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -22,25 +26,30 @@ namespace FormsLommeregner
 
             //Form1 form = new Form1();
             //Login login = new Login();
-            InternetAndSecurity internetAndSecurity = new InternetAndSecurity();
-            internetAndSecurity.Run();
-
-            InternetAndSecurity.SqlConnect();
             
-            if (InternetAndSecurity.SqlReader("Uid", "gkim@strandjaegervej.dk", "Code1", InternetAndSecurity.sqlConnection))
+            InternetAndSecurity internet = new InternetAndSecurity();
+            internet.Run();
+
+            SQL.SqlConnect();
+            
+           
+           
+                
+           
+           
+            Login login = new Login();
+            Formelsamling form = new Formelsamling();
+            TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
+            form.funcList.Nodes.AddRange(treeNodes);
+            Application.Run(login);
+            string email = login.EmailField.Text.ToLower();
+            if (SQL.SqlReader(email, email, "Mac", SQL.sqlConnection))
             {
-                Formelsamling form = new Formelsamling();
-                TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
-                form.funcList.Nodes.AddRange(treeNodes);
-                Application.Run(form);
+                Print("yeet");
             }
             else
             {
-                Login login = new Login();
-                Formelsamling form = new Formelsamling();
-                TreeNode[] treeNodes = new TreeNode[] { new MathFormulary().treeNode, new PhysicsFormulary().treeNode, };
-                form.funcList.Nodes.AddRange(treeNodes);
-                Application.Run(login);
+                Print("no yeet");
             }
                 
 

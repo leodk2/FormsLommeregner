@@ -25,12 +25,18 @@ namespace FormsLommeregner
 
         // create treeNode accessible from outside !shouid be static in BaseFormulary
         public TreeNode treeNode = new TreeNode("Fysik");
-
+        public struct PhysicsFormularyStructs
+        {
+            public string subject;
+            public string name;
+            public string description;
+            public int varCount;
+        }
         // function to add all formulars to formulars list
         public PhysicsFormulary() : base()
         {
             formulas.Add(new PotentialEnergy());
-            //formulars.Add(new Ohm());
+            formulas.Add(new Spaending());
 
 
 
@@ -41,7 +47,12 @@ namespace FormsLommeregner
 
             #region energy
         }
-        public class PotentialEnergy : Formular3var
+        public class PotentialEenrgyWStructs
+        {
+            PhysicsFormularyStructs Structs = new PhysicsFormularyStructs();
+            PhysicsFormularyStructs 
+        }
+        public class PotentialEnergy : Formular2var
         {
             //set name
             public override string Name { get { return "Potentiel energi"; } }
@@ -68,7 +79,7 @@ namespace FormsLommeregner
             // Potential Energy
             public override double Function(double mass, double height)
             {
-                
+
                 double energy = gAcc * mass * height;
                 return energy;
             }
@@ -85,11 +96,11 @@ namespace FormsLommeregner
 
         }
         #endregion
-        public class Spænding : Formular3var
+        public class Spaending : Formular2var
         {
-            public override string Name { get { return "Modstand"; } }
+            public override string Name { get { return "Spændning"; } }
             public override int VarCount { get { return 3; } }
-            public override string Description { get { return "Beregn spændingen ud fra modstand og strømstyrke";} }
+            public override string Description { get { return "Beregn spændingen ud fra modstand og strømstyrke"; } }
             readonly string[] vs = new string[] { "Spænding", "Modstand", "Strømstyrke" };
             public override string[] VarName { get { return vs; } }
 
@@ -118,4 +129,5 @@ namespace FormsLommeregner
                 form1.Variables.Items.AddRange(VarName);
             }
         }
+    }
 }

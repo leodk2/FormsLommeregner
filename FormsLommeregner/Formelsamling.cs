@@ -20,17 +20,7 @@ namespace FormsLommeregner
         {
             
             InitializeComponent();
-            /*
-            //funcList.autoSize = true;
-            Variables.Visible = false; Var2.Visible = false; Var1.Visible = false;
-            TextBox text = new TextBox();
-            Controls.Add(text);
-            text.Location = new Point(600, 100);
-            //text.Size = new Size(100, 100);
-            //text.Text = "Hej";
-            text.Visible = true;
-            //text.Focus();
-            */
+           
 
 
         }
@@ -47,7 +37,7 @@ namespace FormsLommeregner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // AllocConsole();
+          
             
 
 
@@ -62,7 +52,7 @@ namespace FormsLommeregner
         {
 
         }
-
+        public List<TextBox> textBoxes = new List<TextBox>();
 
         public void ShowMath()
         {
@@ -80,7 +70,7 @@ namespace FormsLommeregner
                     currentFormula = formula;
                     sphereCircumference.Shared();
 
-                    List<TextBox> textBoxes = new List<TextBox>();
+                   
                     for (int i = 0; i < formula.VarCount; i++)
                     {
                         textBoxes.Add(new TextBox());
@@ -91,9 +81,10 @@ namespace FormsLommeregner
                         Formelsamling form1 = new Formelsamling();
                         form1.Controls.Add(text);
                         text.Visible = true;
-                        textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
 
+                        textBoxes[textBoxes.Count - 1].Location = new Point(usableSpace * (i + 1), 200);
                     }
+                    
                     foreach (TextBox txtBox in textBoxes)
                     {
                         Controls.Add(txtBox);
@@ -119,7 +110,8 @@ namespace FormsLommeregner
                     // set the current formula as the currentFormula or the selected formula
                     currentFormula = formula;
                     potential.Shared();
-                    PhysicsFormulary.TextboxPlacement(currentFormula.VarCount, this);                 
+                    
+                    
                 }
                 // get out of loop
                 break;
@@ -132,7 +124,7 @@ namespace FormsLommeregner
             
 
             MathFormulary math = new MathFormulary();
-            PhysicsFormulary physicsFormulary = new PhysicsFormulary();
+                PhysicsFormulary physicsFormulary = new PhysicsFormulary();
 
             Print("checks " + e.Node.Text);
             foreach (BaseFormula formula in math.formulas)
@@ -158,6 +150,8 @@ namespace FormsLommeregner
             
         }
 
+        
+
         // when calculate button is hit
         private void Calc_Click(object sender, EventArgs e)
         {
@@ -165,16 +159,16 @@ namespace FormsLommeregner
             if (currentFormula != null)
             {
                 // get variable from field 1
-                var varName = Convert.ToDouble(Var1.Text);
+                var varValue = Convert.ToDouble(textBoxes[0].Text);
                 
                 // get current formula as formula2var to access certain functions
-                Formula2var formul = currentFormula as Formula2var;
+                Formula1var formul = currentFormula as Formula1var;
 
                 // write result in result label
-                Result.Text = formul.Function(varName).ToString();
+                Result.Text = formul.Function(varValue).ToString();
                 
                 // sanity check
-                Console.WriteLine(formul.Function(varName));
+                Console.WriteLine(formul.Function(varValue));
             }
         }
     }

@@ -20,6 +20,13 @@ namespace FormsLommeregner
         public const double gAcc = 9.82;
     }
 
+    public struct Baseformula
+    {
+        public string subject;
+        public string name;
+        public string description;
+        public int varCount;
+    }
     public abstract class BaseFormulary
     {
         public BaseFormulary()
@@ -42,6 +49,7 @@ namespace FormsLommeregner
                     //Formelsamling form1 = new Formelsamling();
                     form1.Controls.Add(text);
                     text.Visible = true;
+                    
                     textBoxes[textBoxes.Count-1].Location = new Point(usableSpace * (i + 1));
                 }
                 else
@@ -62,7 +70,7 @@ namespace FormsLommeregner
     }
 
     // formular class for 2 unknown variables
-    public abstract class Formula2var : BaseFormula
+    public abstract class Formula1var : BaseFormula
     {
         public int pixel = 656;
         public abstract void Shared();
@@ -83,7 +91,7 @@ namespace FormsLommeregner
     }
     
     // formular class for 2 unknown variables
-    public abstract class Formular3var : BaseFormula
+    public abstract class Formular2var : BaseFormula
     {
         public abstract string[] VarName { get; } 
         const double pi = PI;

@@ -32,10 +32,9 @@
             this.Result = new System.Windows.Forms.Label();
             this.FuncName = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.Label();
-            this.Var1 = new System.Windows.Forms.TextBox();
-            this.Var2 = new System.Windows.Forms.TextBox();
             this.Calc = new System.Windows.Forms.Button();
             this.Variables = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // funcList
@@ -76,21 +75,6 @@
             this.Description.TabIndex = 7;
             this.Description.Text = "Beskrivelse";
             // 
-            // Var1
-            // 
-            this.Var1.Location = new System.Drawing.Point(223, 199);
-            this.Var1.Name = "Var1";
-            this.Var1.Size = new System.Drawing.Size(100, 20);
-            this.Var1.TabIndex = 8;
-            // 
-            // Var2
-            // 
-            this.Var2.Location = new System.Drawing.Point(382, 199);
-            this.Var2.Name = "Var2";
-            this.Var2.Size = new System.Drawing.Size(100, 20);
-            this.Var2.TabIndex = 9;
-            this.Var2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // Calc
             // 
             this.Calc.Location = new System.Drawing.Point(382, 299);
@@ -109,15 +93,21 @@
             this.Variables.Size = new System.Drawing.Size(121, 21);
             this.Variables.TabIndex = 11;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(188, 178);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 12;
+            // 
             // Formelsamling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Variables);
             this.Controls.Add(this.Calc);
-            this.Controls.Add(this.Var2);
-            this.Controls.Add(this.Var1);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.FuncName);
             this.Controls.Add(this.Result);
@@ -132,12 +122,11 @@
         #endregion
         private System.Windows.Forms.Label Result;
         public System.Windows.Forms.TreeView funcList;
-        private System.Windows.Forms.TextBox Var1;
-        private System.Windows.Forms.TextBox Var2;
         private System.Windows.Forms.Button Calc;
         public System.Windows.Forms.Label FuncName;
         public System.Windows.Forms.Label Description;
         public System.Windows.Forms.ComboBox Variables;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

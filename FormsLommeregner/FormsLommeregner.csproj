@@ -59,6 +59,8 @@
     <Compile Include="Formelsamling.Designer.cs">
       <DependentUpon>Formelsamling.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulary\FormulaInterfaces.cs" />
+    <Compile Include="Formulary\MathFormulary.cs" />
     <Compile Include="InternetAndSecurity.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

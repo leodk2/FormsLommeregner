@@ -8,6 +8,14 @@ using System.Windows.Forms;
 
 namespace FormsLommeregner
 {
+    public struct PhysicsFormularyStructs
+    {
+        public struct Subject{ string subject { get; } }
+
+        public string name { get; }
+        public string description { get; }
+        public int varCount { get; }
+    }
     public class PhysicsFormulary : BaseFormulary
     {
         /// constants
@@ -25,18 +33,13 @@ namespace FormsLommeregner
 
         // create treeNode accessible from outside !shouid be static in BaseFormulary
         public TreeNode treeNode = new TreeNode("Fysik");
-        public struct PhysicsFormularyStructs
-        {
-            public string subject;
-            public string name;
-            public string description;
-            public int varCount;
-        }
+
         // function to add all formulars to formulars list
         public PhysicsFormulary() : base()
         {
             formulas.Add(new PotentialEnergy());
             formulas.Add(new Spaending());
+            formulas.Add(new )
 
 
 
@@ -49,8 +52,10 @@ namespace FormsLommeregner
         }
         public class PotentialEenrgyWStructs
         {
-            PhysicsFormularyStructs Structs = new PhysicsFormularyStructs();
-            PhysicsFormularyStructs 
+
+            
+            
+            
         }
         public class PotentialEnergy : Formular2var
         {
